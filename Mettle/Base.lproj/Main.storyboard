@@ -1,26 +1,115 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o2h-6u-k5c">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Calendar-->
+        <scene sceneID="ajT-Fg-XZt">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8cQ-yj-a0I" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="rKt-3C-8ZV"/>
+                        <viewControllerLayoutGuide type="bottom" id="fxX-kS-dbr"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="aRH-Hp-RQR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" id="epC-92-pT2"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wyg-S4-WPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1145" y="1212"/>
+        </scene>
+        <!--Graph-->
+        <scene sceneID="rBd-dR-mfn">
+            <objects>
+                <viewController id="9xL-pW-L2g" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xmE-9j-hIZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="ycX-n8-3Xt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pM0-fR-JFX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Graph" image="graph" id="tw4-tH-hVZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ti5-FD-DEL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="1900"/>
+        </scene>
+        <!--Associations-->
+        <scene sceneID="5bc-3v-ReQ">
+            <objects>
+                <viewController id="VXb-Gi-Wly" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z2z-M2-VMS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ggo-Tn-Q5R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="s8C-Lu-y6g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Associations" image="associations" id="5po-mN-A9Y"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YNi-NV-fhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="2605"/>
+        </scene>
+        <!--Logs-->
+        <scene sceneID="E2a-IO-Pbl">
+            <objects>
+                <viewController id="3P3-Dl-znR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Md-1S-W7V"/>
+                        <viewControllerLayoutGuide type="bottom" id="vKY-8H-gY8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TvU-kl-lkZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Logs" image="logs" id="yCA-Lc-Wrg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tCu-eM-5xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1146" y="495"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="LY6-lr-Tu4">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="o2h-6u-k5c" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="lch-xd-hti">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="3P3-Dl-znR" kind="relationship" relationship="viewControllers" id="or9-u9-J4O"/>
+                        <segue destination="8cQ-yj-a0I" kind="relationship" relationship="viewControllers" id="jWZ-hM-0QC"/>
+                        <segue destination="9xL-pW-L2g" kind="relationship" relationship="viewControllers" id="NEK-xB-rv7"/>
+                        <segue destination="VXb-Gi-Wly" kind="relationship" relationship="viewControllers" id="doc-ag-VPi"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qmi-od-KpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="282" y="496"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="associations" width="30" height="30"/>
+        <image name="calendar" width="30" height="30"/>
+        <image name="graph" width="30" height="30"/>
+        <image name="logs" width="30" height="30"/>
+    </resources>
 </document>
