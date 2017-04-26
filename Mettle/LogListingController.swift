@@ -38,12 +38,12 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Log")
         
         // sort by author anme and then by title
-        let dateSort = NSSortDescriptor(key: "date", ascending: true)
+        let dateSort = NSSortDescriptor(key: "date", ascending: false)
         request.sortDescriptors = [dateSort]
         
         // Create the controller using our moc
         let moc = logs.managedObjectContext
-        fetchedResultsController  = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController  = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: "date", cacheName: nil)
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
@@ -96,7 +96,21 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
             fatalError("No sections in fetchedResultsController")
         }
         let sectionInfo = sections[section]
-        return sectionInfo.name
+        var newDate : Date = Date()
+        
+        for object in sectionInfo.objects! {
+            switch object {
+            case let newLog as Log:
+                newDate = newLog.date! as Date
+            default:
+                print("not a log.. :/")
+            }
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        
+        return dateFormatter.string(from: newDate)
     }
     
     /*

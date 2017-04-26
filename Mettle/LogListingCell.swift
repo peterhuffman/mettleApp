@@ -24,7 +24,9 @@ class LogListingCell: UITableViewCell {
     }
     
     func configureCell(log: Log){
-        dateLabel.text = String(describing: log.date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        dateLabel.text = dateFormatter.string(from: (log.date as Date?)!)
         entryField.text = log.text
     }
 

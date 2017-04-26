@@ -25,7 +25,10 @@ class LogDetailViewController: UIViewController {
         case .new:
             break
         case let .update(date, text):
-            navigationItem.title = date.description
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .short
+            navigationItem.title = dateFormatter.string(from: date)
             datePicker.date = date
             entryField.text = text
         }
