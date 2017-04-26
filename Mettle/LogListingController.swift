@@ -160,7 +160,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         // Pass the selected object to the new view controller.
         
         switch(segue.identifier ?? ""){
-        case "AddBook":
+        case "AddLog":
             guard let navController = segue.destination as? UINavigationController else{
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -171,7 +171,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
             destination.callback = { (date, text) in
                 self.logs.add(date: date, text: text)
             }
-        case "EditBook":
+        case "EditLog":
             
             guard let destination = segue.destination as? LogDetailViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
