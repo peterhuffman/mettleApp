@@ -192,7 +192,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
             
             destination.type = .update(log.date! as Date, log.text!)
             destination.callback = { (date, text) in
-                print("update")
+                self.logs.update(oldLog: log, date: date, text: text)
             }
             
             

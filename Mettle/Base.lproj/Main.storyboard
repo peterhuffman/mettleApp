@@ -104,7 +104,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UH6-2d-hnH">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UH6-2d-hnH">
                                             <rect key="frame" x="8" y="0.0" width="90" height="56.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpH-iD-6Ww">
@@ -128,10 +128,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="dateLabel" destination="QpH-iD-6Ww" id="0OK-dQ-b5y"/>
-                                    <outlet property="entryField" destination="4WE-1L-Clg" id="Gf5-VP-R0Q"/>
-                                    <outlet property="textLabel" destination="4WE-1L-Clg" id="k5o-yM-9WV"/>
-                                    <outlet property="textLable" destination="4WE-1L-Clg" id="tbb-4H-dAX"/>
+                                    <outlet property="dateLabel" destination="QpH-iD-6Ww" id="Hzb-Th-o5M"/>
+                                    <outlet property="entryField" destination="4WE-1L-Clg" id="Lbz-DF-RvA"/>
+                                    <segue destination="7wi-yz-YvQ" kind="show" identifier="EditLog" id="QGp-uR-nYd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -206,8 +205,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Log" id="Lkf-mU-b26">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="FNU-KV-za7"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6Ka-Yp-ccT"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="FNU-KV-za7">
+                            <connections>
+                                <action selector="cancel:" destination="7wi-yz-YvQ" id="nKU-cu-3Qr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6Ka-Yp-ccT">
+                            <connections>
+                                <segue destination="Ep4-jg-2Ih" kind="unwind" unwindAction="unwindFromEditWithSender:" id="xHl-fT-odv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="datePicker" destination="a5x-K2-XbW" id="HBn-SZ-p2t"/>
@@ -216,6 +223,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6b-jE-Rcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Ep4-jg-2Ih" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3869.5999999999999" y="494.30284857571218"/>
         </scene>
@@ -263,4 +271,7 @@
         <image name="graph" width="30" height="30"/>
         <image name="logs" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="QGp-uR-nYd"/>
+    </inferredMetricsTieBreakers>
 </document>
