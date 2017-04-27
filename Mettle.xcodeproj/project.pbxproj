@@ -17,6 +17,8 @@
 		13E62F3F1EB012190067C2C4 /* LogListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F3E1EB012190067C2C4 /* LogListingCell.swift */; };
 		13E62F411EB014C90067C2C4 /* LogCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F401EB014C90067C2C4 /* LogCollection.swift */; };
 		13E62F431EB0159D0067C2C4 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */; };
+		34B7218F1EB17DF0004355EE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B7218E1EB17DF0004355EE /* CalendarViewController.swift */; };
+		34C690BF1EB15A2200A01B76 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C690BE1EB15A2200A01B76 /* CustomCell.swift */; };
 		F23AE70C2528C5A5581C8CAF /* Pods_Mettle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E09EBC890ED753E4B2F5DC /* Pods_Mettle.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,8 @@
 		13E62F3E1EB012190067C2C4 /* LogListingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogListingCell.swift; sourceTree = "<group>"; };
 		13E62F401EB014C90067C2C4 /* LogCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCollection.swift; sourceTree = "<group>"; };
 		13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
+		34B7218E1EB17DF0004355EE /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		34C690BE1EB15A2200A01B76 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		8A6229FAE18B81381AFA324E /* Pods-Mettle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mettle.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mettle/Pods-Mettle.release.xcconfig"; sourceTree = "<group>"; };
 		94E09EBC890ED753E4B2F5DC /* Pods_Mettle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mettle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,6 +86,8 @@
 				13634BE21EABE2DA00D8CC25 /* LaunchScreen.storyboard */,
 				13634BE51EABE2DA00D8CC25 /* Info.plist */,
 				13634BDD1EABE2DA00D8CC25 /* Mettle.xcdatamodeld */,
+				34C690BE1EB15A2200A01B76 /* CustomCell.swift */,
+				34B7218E1EB17DF0004355EE /* CalendarViewController.swift */,
 			);
 			path = Mettle;
 			sourceTree = "<group>";
@@ -233,6 +239,8 @@
 				13E62F411EB014C90067C2C4 /* LogCollection.swift in Sources */,
 				13E62F3F1EB012190067C2C4 /* LogListingCell.swift in Sources */,
 				13634BD71EABE2DA00D8CC25 /* AppDelegate.swift in Sources */,
+				34B7218F1EB17DF0004355EE /* CalendarViewController.swift in Sources */,
+				34C690BF1EB15A2200A01B76 /* CustomCell.swift in Sources */,
 				13634BDF1EABE2DA00D8CC25 /* Mettle.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +269,7 @@
 /* Begin XCBuildConfiguration section */
 		13634BE61EABE2DA00D8CC25 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A6229FAE18B81381AFA324E /* Pods-Mettle.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -286,6 +295,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/**",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -300,18 +313,24 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/**",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		13634BE71EABE2DA00D8CC25 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A6229FAE18B81381AFA324E /* Pods-Mettle.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -337,6 +356,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/**",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -345,11 +368,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/**",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -360,6 +388,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TSRANL5S76;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Pods/**",
+				);
 				INFOPLIST_FILE = Mettle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -375,6 +407,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TSRANL5S76;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Pods/**",
+				);
 				INFOPLIST_FILE = Mettle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
