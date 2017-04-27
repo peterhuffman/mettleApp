@@ -17,6 +17,9 @@
 		13E62F3F1EB012190067C2C4 /* LogListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F3E1EB012190067C2C4 /* LogListingCell.swift */; };
 		13E62F411EB014C90067C2C4 /* LogCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F401EB014C90067C2C4 /* LogCollection.swift */; };
 		13E62F431EB0159D0067C2C4 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */; };
+		A35D8F021EB1749B000F4BEB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D8F011EB1749B000F4BEB /* SettingsTableViewController.swift */; };
+		A35D8F051EB17942000F4BEB /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D8F041EB17942000F4BEB /* SwitchCell.swift */; };
+		A393F52C1EB18548005CA614 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A393F52B1EB18548005CA614 /* DatePickerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		13E62F3E1EB012190067C2C4 /* LogListingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogListingCell.swift; sourceTree = "<group>"; };
 		13E62F401EB014C90067C2C4 /* LogCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCollection.swift; sourceTree = "<group>"; };
 		13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
+		A35D8F011EB1749B000F4BEB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		A35D8F041EB17942000F4BEB /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		A393F52B1EB18548005CA614 /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 				13634BD81EABE2DA00D8CC25 /* ViewController.swift */,
 				13E62F3C1EB011360067C2C4 /* LogListingController.swift */,
 				13634BDA1EABE2DA00D8CC25 /* Main.storyboard */,
+				A35D8F031EB17654000F4BEB /* Settings */,
 				13E62F3E1EB012190067C2C4 /* LogListingCell.swift */,
 				13E62F401EB014C90067C2C4 /* LogCollection.swift */,
 				13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */,
@@ -77,6 +84,16 @@
 				13634BDD1EABE2DA00D8CC25 /* Mettle.xcdatamodeld */,
 			);
 			path = Mettle;
+			sourceTree = "<group>";
+		};
+		A35D8F031EB17654000F4BEB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A35D8F011EB1749B000F4BEB /* SettingsTableViewController.swift */,
+				A35D8F041EB17942000F4BEB /* SwitchCell.swift */,
+				A393F52B1EB18548005CA614 /* DatePickerCell.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,8 +171,11 @@
 			files = (
 				13634BD91EABE2DA00D8CC25 /* ViewController.swift in Sources */,
 				13E62F431EB0159D0067C2C4 /* LogDetailViewController.swift in Sources */,
+				A35D8F051EB17942000F4BEB /* SwitchCell.swift in Sources */,
 				13E62F3D1EB011360067C2C4 /* LogListingController.swift in Sources */,
 				13E62F411EB014C90067C2C4 /* LogCollection.swift in Sources */,
+				A393F52C1EB18548005CA614 /* DatePickerCell.swift in Sources */,
+				A35D8F021EB1749B000F4BEB /* SettingsTableViewController.swift in Sources */,
 				13E62F3F1EB012190067C2C4 /* LogListingCell.swift in Sources */,
 				13634BD71EABE2DA00D8CC25 /* AppDelegate.swift in Sources */,
 				13634BDF1EABE2DA00D8CC25 /* Mettle.xcdatamodeld in Sources */,
