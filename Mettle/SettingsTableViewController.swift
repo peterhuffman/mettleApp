@@ -13,6 +13,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         //UserDefaults.standard.set(false, forKey: "requirePasscode")
 
         // Uncomment the following line to preserve selection between presentations
@@ -31,30 +32,53 @@ class SettingsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        if section == 0 || section == 1 {
+            return 2
+        } else {
+            return 1
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "passcodeSwitchCell", for: indexPath) as! SwitchCell
-            
-            cell.switchElmt.isOn = UserDefaults.standard.bool(forKey: "requirePasscode")
-            cell.switchElmt.tag = indexPath.section
-            cell.switchElmt.addTarget(self, action: #selector(switchTriggered(sender:)), for: .valueChanged)
-            
-            return cell
-
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "passcodeSwitchCell", for: indexPath) as! SwitchCell
+                
+                cell.switchElmt.isOn = UserDefaults.standard.bool(forKey: "requirePasscode")
+                cell.switchElmt.tag = indexPath.section
+                cell.switchElmt.addTarget(self, action: #selector(switchTriggered(sender:)), for: .valueChanged)
+                
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "changePasscodeCell", for: indexPath) as UITableViewCell
+                
+                return cell
+            }
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "notificationSwitchCell", for: indexPath) as! SwitchCell
+                
+                cell.switchElmt.isOn = UserDefaults.standard.bool(forKey: "sendNotifications")
+                cell.switchElmt.tag = indexPath.section
+                cell.switchElmt.addTarget(self, action: #selector(switchTriggered(sender:)), for: .valueChanged)
+                
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "changeNotificationDateCell", for: indexPath) as UITableViewCell
+                
+                return cell
+            }
+  
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "changePasscodeCell", for: indexPath) as! ChangePasscodeCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "eraseAllDataCell", for: indexPath) as UITableViewCell
             
             return cell
-
         }
 
     }
@@ -65,7 +89,9 @@ class SettingsTableViewController: UITableViewController {
         
         if indexPath.section == 0 && indexPath.row == 1 && !UserDefaults.standard.bool(forKey: "requirePasscode") {
             return 0;
-        } else{
+        } else if indexPath.section == 1 && indexPath.row == 1 && !UserDefaults.standard.bool(forKey: "sendNotifications") {
+            return 0;
+        } else {
             return tableView.rowHeight;
         }
     }
@@ -76,7 +102,11 @@ class SettingsTableViewController: UITableViewController {
         //passcode required section
         if triggeredSwitch.tag == 0 {
             UserDefaults.standard.set(triggeredSwitch.isOn, forKey: "requirePasscode")
+        } else if triggeredSwitch.tag == 1 {
+            UserDefaults.standard.set(triggeredSwitch.isOn, forKey: "sendNotifications")
         }
+        
+        UserDefaults.standard.synchronize()
         
         tableView.reloadData()
     }

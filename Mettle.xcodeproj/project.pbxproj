@@ -19,7 +19,7 @@
 		13E62F431EB0159D0067C2C4 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */; };
 		A35D8F021EB1749B000F4BEB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D8F011EB1749B000F4BEB /* SettingsTableViewController.swift */; };
 		A35D8F051EB17942000F4BEB /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D8F041EB17942000F4BEB /* SwitchCell.swift */; };
-		A393F52C1EB18548005CA614 /* ChangePasscodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A393F52B1EB18548005CA614 /* ChangePasscodeCell.swift */; };
+		A393F52C1EB18548005CA614 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A393F52B1EB18548005CA614 /* DatePickerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,7 @@
 		13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
 		A35D8F011EB1749B000F4BEB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A35D8F041EB17942000F4BEB /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
-		A393F52B1EB18548005CA614 /* ChangePasscodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasscodeCell.swift; sourceTree = "<group>"; };
+		A393F52B1EB18548005CA614 /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +91,7 @@
 			children = (
 				A35D8F011EB1749B000F4BEB /* SettingsTableViewController.swift */,
 				A35D8F041EB17942000F4BEB /* SwitchCell.swift */,
-				A393F52B1EB18548005CA614 /* ChangePasscodeCell.swift */,
+				A393F52B1EB18548005CA614 /* DatePickerCell.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -174,7 +174,7 @@
 				A35D8F051EB17942000F4BEB /* SwitchCell.swift in Sources */,
 				13E62F3D1EB011360067C2C4 /* LogListingController.swift in Sources */,
 				13E62F411EB014C90067C2C4 /* LogCollection.swift in Sources */,
-				A393F52C1EB18548005CA614 /* ChangePasscodeCell.swift in Sources */,
+				A393F52C1EB18548005CA614 /* DatePickerCell.swift in Sources */,
 				A35D8F021EB1749B000F4BEB /* SettingsTableViewController.swift in Sources */,
 				13E62F3F1EB012190067C2C4 /* LogListingCell.swift in Sources */,
 				13634BD71EABE2DA00D8CC25 /* AppDelegate.swift in Sources */,

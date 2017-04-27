@@ -1,5 +1,5 @@
 //
-//  ChangePasscodeCell.swift
+//  DatePickerCell.swift
 //  Mettle
 //
 //  Created by Gordon Nickerson on 4/26/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChangePasscodeCell: UITableViewCell {
+class DatePickerCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
