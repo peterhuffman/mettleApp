@@ -8,14 +8,18 @@
 
 import UIKit
 
-class LogDetailViewController: UIViewController {
+class LogDetailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var type: DetailType = .new
-    var callback: ((Date, String)->Void)?
+    var callback: ((Date, String, [Float], Data)->Void)?
     
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var entryField: UITextField!
+    @IBOutlet weak var entryText: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var hsSlider: UISlider!
+    @IBOutlet weak var rsSlider: UISlider!
+    @IBOutlet weak var pgSlider: UISlider!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +27,42 @@ class LogDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         switch(type){
         case .new:
+            imageView.image = UIImage(named: "default")
             break
-        case let .update(date, text):
-            navigationItem.title = date.description
+        case let .update(date, text, values, image):
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .short
+            navigationItem.title = dateFormatter.string(from: date)
             datePicker.date = date
-            entryField.text = text
+            entryText.text = text
+            hsSlider.value = values[0]
+            pgSlider.value = values[1]
+            rsSlider.value = values[2]
+            imageView.image = UIImage(data: image as Data)
         }
         
+    }
+    
+    
+    @IBAction func imageButton(_ sender: UIButton) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.allowsEditing = false
+        self.present(image, animated: true) {
+            // Add code here after image is complete
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageView.image = image
+        } else {
+            //Error message
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -54,10 +87,12 @@ class LogDetailViewController: UIViewController {
             return
         }
         let date = datePicker.date 
-        let text = entryField.text ?? ""
-        
+        let text = entryText.text ?? ""
+        let values = [hsSlider.value, pgSlider.value, rsSlider.value]
+        let image = UIImagePNGRepresentation(imageView.image!)!
+
         if callback != nil{
-            callback!(date, text)
+            callback!(date, text, values, image)
         }
     }
     
@@ -67,5 +102,5 @@ class LogDetailViewController: UIViewController {
 
 enum DetailType{
     case new
-    case update(Date, String)
+    case update(Date, String, [Float], Data)
 }

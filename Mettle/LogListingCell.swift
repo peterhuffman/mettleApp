@@ -10,7 +10,8 @@ import UIKit
 
 class LogListingCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var entryField: UILabel!
+    @IBOutlet weak var entryField: UITextView!
+    @IBOutlet weak var cellImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,8 +25,13 @@ class LogListingCell: UITableViewCell {
     }
     
     func configureCell(log: Log){
-        dateLabel.text = String(describing: log.date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        dateLabel.text = dateFormatter.string(from: (log.date as Date?)!)
         entryField.text = log.text
+        let newData = log.image
+        cellImageView.image = UIImage(data: newData! as Data)
     }
 
 }
