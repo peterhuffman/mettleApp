@@ -182,8 +182,8 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             destination.type = .new
-            destination.callback = { (date, text) in
-                self.logs.add(date: date, text: text)
+            destination.callback = { (date, text, values) in
+                self.logs.add(date: date, text: text, values: values)
             }
         case "EditLog":
             
@@ -204,9 +204,9 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
                 fatalError("fetched object was not a Book")
             }
             
-            destination.type = .update(log.date! as Date, log.text!)
-            destination.callback = { (date, text) in
-                self.logs.update(oldLog: log, date: date, text: text)
+            destination.type = .update(log.date! as Date, log.text!, [log.hsValue, log.pgValue, log.rsValue])
+            destination.callback = { (date, text, values) in
+                self.logs.update(oldLog: log, date: date, text: text, values: values)
             }
             
             

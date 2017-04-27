@@ -34,12 +34,15 @@ class LogCollection{
     }
     
     /* Add a new book to the collection */
-    func add(date: Date, text: String){
+    func add(date: Date, text: String, values: [Float]){
         var log:Log!
         managedObjectContext.performAndWait {
             log = Log(context: self.managedObjectContext)
             log.date = date as NSDate
             log.text = text
+            log.hsValue = values[0]
+            log.pgValue = values[1]
+            log.rsValue = values[2]
             self.saveChanges()
         }
     }
@@ -48,9 +51,12 @@ class LogCollection{
      
      We make this a seperate function rather than setting the values directly so that we can use findAuthor and save changes.
      */
-    func update(oldLog: Log, date: Date, text: String){
+    func update(oldLog: Log, date: Date, text: String, values: [Float]){
         oldLog.date = date as NSDate
         oldLog.text = text
+        oldLog.hsValue = values[0]
+        oldLog.pgValue = values[1]
+        oldLog.rsValue = values[2]
         self.saveChanges()
     }
     

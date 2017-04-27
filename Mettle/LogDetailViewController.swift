@@ -11,11 +11,14 @@ import UIKit
 class LogDetailViewController: UIViewController {
     
     var type: DetailType = .new
-    var callback: ((Date, String)->Void)?
+    var callback: ((Date, String, [Float])->Void)?
     
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var entryField: UITextField!
+    @IBOutlet weak var entryText: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var hsSlider: UISlider!
+    @IBOutlet weak var rsSlider: UISlider!
+    @IBOutlet weak var pgSlider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +27,16 @@ class LogDetailViewController: UIViewController {
         switch(type){
         case .new:
             break
-        case let .update(date, text):
+        case let .update(date, text, values):
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .short
             navigationItem.title = dateFormatter.string(from: date)
             datePicker.date = date
-            entryField.text = text
+            entryText.text = text
+            hsSlider.value = values[0]
+            pgSlider.value = values[1]
+            rsSlider.value = values[2]
         }
         
     }
@@ -57,10 +63,11 @@ class LogDetailViewController: UIViewController {
             return
         }
         let date = datePicker.date 
-        let text = entryField.text ?? ""
+        let text = entryText.text ?? ""
+        let values = [hsSlider.value, pgSlider.value, rsSlider.value]
         
         if callback != nil{
-            callback!(date, text)
+            callback!(date, text, values)
         }
     }
     
@@ -70,5 +77,5 @@ class LogDetailViewController: UIViewController {
 
 enum DetailType{
     case new
-    case update(Date, String)
+    case update(Date, String, [Float])
 }
