@@ -71,7 +71,8 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         
         let sectionInfo = sections[section]
         
-        return sectionInfo.numberOfObjects
+//        return sectionInfo.numberOfObjects
+        return 1
     }
     
     /* Get a table cell loaded with the right data for the entry at indexPath (section/row)*/
@@ -90,28 +91,28 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         return cell
     }
     
-    /* Get the title to be displayed between sections */
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let sections = fetchedResultsController.sections else{
-            fatalError("No sections in fetchedResultsController")
-        }
-        let sectionInfo = sections[section]
-        var newDate : Date = Date()
-        
-        for object in sectionInfo.objects! {
-            switch object {
-            case let newLog as Log:
-                newDate = newLog.date! as Date
-            default:
-                print("not a log.. :/")
-            }
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        
-        return dateFormatter.string(from: newDate)
-    }
+//    /* Get the title to be displayed between sections */
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        guard let sections = fetchedResultsController.sections else{
+//            fatalError("No sections in fetchedResultsController")
+//        }
+//        let sectionInfo = sections[section]
+//        var newDate : Date = Date()
+//        
+//        for object in sectionInfo.objects! {
+//            switch object {
+//            case let newLog as Log:
+//                newDate = newLog.date! as Date
+//            default:
+//                print("not a log.. :/")
+//            }
+//        }
+//        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .medium
+//        
+//        return dateFormatter.string(from: newDate)
+//    }
     
     /*
         YOU ARE HERE
@@ -182,8 +183,8 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             destination.type = .new
-            destination.callback = { (date, text, values) in
-                self.logs.add(date: date, text: text, values: values)
+            destination.callback = { (date, text, values, image) in
+                self.logs.add(date: date, text: text, values: values, image: image)
             }
         case "EditLog":
             
@@ -204,9 +205,10 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
                 fatalError("fetched object was not a Book")
             }
             
-            destination.type = .update(log.date! as Date, log.text!, [log.hsValue, log.pgValue, log.rsValue])
-            destination.callback = { (date, text, values) in
-                self.logs.update(oldLog: log, date: date, text: text, values: values)
+            
+            destination.type = .update(log.date! as Date, log.text!, [log.hsValue, log.pgValue, log.rsValue], log.image! as Data)
+            destination.callback = { (date, text, values, image) in
+                self.logs.update(oldLog: log, date: date, text: text, values: values, image: image)
             }
             
             

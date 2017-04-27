@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class LogCollection{
     
@@ -34,7 +35,7 @@ class LogCollection{
     }
     
     /* Add a new book to the collection */
-    func add(date: Date, text: String, values: [Float]){
+    func add(date: Date, text: String, values: [Float], image: Data){
         var log:Log!
         managedObjectContext.performAndWait {
             log = Log(context: self.managedObjectContext)
@@ -43,6 +44,7 @@ class LogCollection{
             log.hsValue = values[0]
             log.pgValue = values[1]
             log.rsValue = values[2]
+            log.image = image as NSData
             self.saveChanges()
         }
     }
@@ -51,12 +53,13 @@ class LogCollection{
      
      We make this a seperate function rather than setting the values directly so that we can use findAuthor and save changes.
      */
-    func update(oldLog: Log, date: Date, text: String, values: [Float]){
+    func update(oldLog: Log, date: Date, text: String, values: [Float], image: Data){
         oldLog.date = date as NSDate
         oldLog.text = text
         oldLog.hsValue = values[0]
         oldLog.pgValue = values[1]
         oldLog.rsValue = values[2]
+        oldLog.image = image as NSData
         self.saveChanges()
     }
     

@@ -3,11 +3,12 @@
     <entity name="Log" representedClassName="Log" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="hsValue" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="pgValue" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rsValue" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Log" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Log" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
