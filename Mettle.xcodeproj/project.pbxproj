@@ -13,6 +13,8 @@
 		13634BDF1EABE2DA00D8CC25 /* Mettle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13634BDD1EABE2DA00D8CC25 /* Mettle.xcdatamodeld */; };
 		13634BE11EABE2DA00D8CC25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13634BE01EABE2DA00D8CC25 /* Assets.xcassets */; };
 		13634BE41EABE2DA00D8CC25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13634BE21EABE2DA00D8CC25 /* LaunchScreen.storyboard */; };
+		13AC57E71EB242850016ED67 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC57E61EB242850016ED67 /* GraphViewController.swift */; };
+		13AC57E91EB246390016ED67 /* AssociationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC57E81EB246390016ED67 /* AssociationsViewController.swift */; };
 		13E62F3D1EB011360067C2C4 /* LogListingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F3C1EB011360067C2C4 /* LogListingController.swift */; };
 		13E62F3F1EB012190067C2C4 /* LogListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F3E1EB012190067C2C4 /* LogListingCell.swift */; };
 		13E62F411EB014C90067C2C4 /* LogCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F401EB014C90067C2C4 /* LogCollection.swift */; };
@@ -31,6 +33,8 @@
 		13634BE01EABE2DA00D8CC25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13634BE31EABE2DA00D8CC25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13634BE51EABE2DA00D8CC25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13AC57E61EB242850016ED67 /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		13AC57E81EB246390016ED67 /* AssociationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociationsViewController.swift; sourceTree = "<group>"; };
 		13E62F3C1EB011360067C2C4 /* LogListingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogListingController.swift; sourceTree = "<group>"; };
 		13E62F3E1EB012190067C2C4 /* LogListingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogListingCell.swift; sourceTree = "<group>"; };
 		13E62F401EB014C90067C2C4 /* LogCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCollection.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 				13634BD81EABE2DA00D8CC25 /* ViewController.swift */,
 				13E62F3C1EB011360067C2C4 /* LogListingController.swift */,
 				13634BDA1EABE2DA00D8CC25 /* Main.storyboard */,
+				13AC57E61EB242850016ED67 /* GraphViewController.swift */,
+				13AC57E81EB246390016ED67 /* AssociationsViewController.swift */,
 				A35D8F031EB17654000F4BEB /* Settings */,
 				13E62F3E1EB012190067C2C4 /* LogListingCell.swift */,
 				13E62F401EB014C90067C2C4 /* LogCollection.swift */,
@@ -171,12 +177,14 @@
 			files = (
 				13634BD91EABE2DA00D8CC25 /* ViewController.swift in Sources */,
 				13E62F431EB0159D0067C2C4 /* LogDetailViewController.swift in Sources */,
+				13AC57E91EB246390016ED67 /* AssociationsViewController.swift in Sources */,
 				A35D8F051EB17942000F4BEB /* SwitchCell.swift in Sources */,
 				13E62F3D1EB011360067C2C4 /* LogListingController.swift in Sources */,
 				13E62F411EB014C90067C2C4 /* LogCollection.swift in Sources */,
 				A393F52C1EB18548005CA614 /* DatePickerCell.swift in Sources */,
 				A35D8F021EB1749B000F4BEB /* SettingsTableViewController.swift in Sources */,
 				13E62F3F1EB012190067C2C4 /* LogListingCell.swift in Sources */,
+				13AC57E71EB242850016ED67 /* GraphViewController.swift in Sources */,
 				13634BD71EABE2DA00D8CC25 /* AppDelegate.swift in Sources */,
 				13634BDF1EABE2DA00D8CC25 /* Mettle.xcdatamodeld in Sources */,
 			);
