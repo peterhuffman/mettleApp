@@ -57,6 +57,14 @@ extension CalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendarVi
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         guard let validCell = cell as? CustomCell else { return }
-        validCell.selectedView.isHidden = false
+        //validCell.selectedView.isHidden = false
+        validCell.selectedView.isHidden = !validCell.selectedView.isHidden
+        validCell.DateLabel.textColor = validCell.selectedView.isHidden ? UIColor.black : UIColor.white
     }
+    
+    /*func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        guard let validCell = cell as? CustomCell else { return }
+        validCell.selectedView.isHidden = true
+    }*/
+    
 }
