@@ -119,7 +119,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         if editingStyle == .delete {
             // Delete the row from the data source
             guard let log = self.fetchedResultsController?.object(at: indexPath) as? Log else{
-                fatalError("Cannot find book")
+                fatalError("Cannot find log")
             }
             
             logs.delete(log)

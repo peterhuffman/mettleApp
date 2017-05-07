@@ -29,13 +29,10 @@ class LogListingCell: UITableViewCell {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         dateLabel.text = dateFormatter.string(from: (log.date as Date?)!)
-//        print("configuring cell")
         
         // If image assocated with log, load image
         if (!loadImage(image: log.imageId!)) {
-//            print("draw custom view")
             cellCustomView.updateValues(top: log.hsValue, mid: log.psValue, bot: log.cuValue)
-//            cellCustomView.draw(CGRect(x: 0, y: 0, width: 1, height: 1))
             cellCustomView.isHidden = false
             cellImageView.isHidden = true
         } else {
