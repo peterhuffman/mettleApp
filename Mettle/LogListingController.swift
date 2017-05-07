@@ -183,8 +183,8 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             destination.type = .new
-            destination.callback = { (date, text, values, image) in
-                self.logs.add(date: date, text: text, values: values, image: image)
+            destination.callback = { (date, text, values, imageId) in
+                self.logs.add(date: date, text: text, values: values, imageId: imageId)
             }
         case "EditLog":
             
@@ -206,9 +206,9 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
             }
             
             
-            destination.type = .update(log.date! as Date, log.text!, [log.hsValue, log.pgValue, log.rsValue], log.image! as Data)
-            destination.callback = { (date, text, values, image) in
-                self.logs.update(oldLog: log, date: date, text: text, values: values, image: image)
+            destination.type = .update(log.date! as Date, log.text!, [log.hsValue, log.psValue, log.cuValue], log.imageId!)
+            destination.callback = { (date, text, values, imageId) in
+                self.logs.update(oldLog: log, date: date, text: text, values: values, imageId: imageId)
             }
             
             

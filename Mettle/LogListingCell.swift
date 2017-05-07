@@ -30,8 +30,8 @@ class LogListingCell: UITableViewCell {
         dateFormatter.timeStyle = .short
         dateLabel.text = dateFormatter.string(from: (log.date as Date?)!)
         entryField.text = log.text
-        let newData = log.image
-        cellImageView.image = UIImage(data: newData! as Data)
+//        let newData = log.image
+//        cellImageView.image = UIImage(data: newData! as Data)
     }
 
 }
