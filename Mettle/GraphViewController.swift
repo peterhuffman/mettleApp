@@ -13,16 +13,22 @@ class GraphViewController: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var lineChartView: LineChartView!
     
+    weak var axisFormatDelegate: IAxisValueFormatter?
+    
     var logs: [LogMock] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateChartWithData()
         
         lineChartView.delegate = self
+        axisFormatDelegate = self
+        
+        //lineChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInSine)
         
         lineChartView.setScaleEnabled(false)
+        
         initLogs(10)
+        updateChartWithData()
         
         // Do any additional setup after loading the view.
     }
@@ -33,7 +39,7 @@ class GraphViewController: UIViewController, ChartViewDelegate {
     }
     
     func initLogs(_ days: Int) {
-        for i in days...1 {
+        for i in (1...days).reversed() {
             var happySad:Int = Int(arc4random_uniform(7));
             happySad -= 3
             var prideShame:Int = Int(arc4random_uniform(7));
@@ -48,69 +54,49 @@ class GraphViewController: UIViewController, ChartViewDelegate {
     }
     
     func updateChartWithData() {
-        var dataEntries1: [ChartDataEntry] = []
+        var happyEntries: [ChartDataEntry] = []
+        var prideEntries: [ChartDataEntry] = []
+        var calmEntries: [ChartDataEntry] = []
         
+        for i in 0..<logs.count {
+            happyEntries.append(ChartDataEntry(x: Double(i), y: Double(logs[i].happySad)))
+            prideEntries.append(ChartDataEntry(x: Double(i), y: Double(logs[i].prideShame)))
+            calmEntries.append(ChartDataEntry(x: Double(i), y: Double(logs[i].calmUpset)))
+        }
         
-        dataEntries1.append(ChartDataEntry(x: 0, y: 3))
-        dataEntries1.append(ChartDataEntry(x: 1, y: 2))
-        dataEntries1.append(ChartDataEntry(x: 2, y: 3))
-        dataEntries1.append(ChartDataEntry(x: 3, y: 3))
-        dataEntries1.append(ChartDataEntry(x: 4, y: 2))
-        dataEntries1.append(ChartDataEntry(x: 5, y: 3))
-        dataEntries1.append(ChartDataEntry(x: 6, y: 3))
-        dataEntries1.append(ChartDataEntry(x: 7, y: 2))
-        dataEntries1.append(ChartDataEntry(x: 8, y: 3))
-        dataEntries1.append(ChartDataEntry(x: 9, y: 3))
+    
+        let happyDataSet = LineChartDataSet(values: happyEntries, label: "Happy/Sad")
         
-        var dataEntries2: [ChartDataEntry] = []
+        let prideDataSet = LineChartDataSet(values: prideEntries, label: "Pride/Shame")
         
+        let calmDataSet = LineChartDataSet(values: calmEntries, label: "Calm/Upset")
         
-        dataEntries2.append(ChartDataEntry(x: 0, y: 0))
-        dataEntries2.append(ChartDataEntry(x: 1, y: -3))
-        dataEntries2.append(ChartDataEntry(x: 2, y: -1))
-        dataEntries2.append(ChartDataEntry(x: 3, y: 0))
-        dataEntries2.append(ChartDataEntry(x: 4, y: -3))
-        dataEntries2.append(ChartDataEntry(x: 5, y: -1))
-        dataEntries2.append(ChartDataEntry(x: 6, y: 0))
-        dataEntries2.append(ChartDataEntry(x: 7, y: -3))
-        dataEntries2.append(ChartDataEntry(x: 8, y: -1))
-        dataEntries2.append(ChartDataEntry(x: 9, y: 0))
+        happyDataSet.setColor(NSUIColor.blue)
+        happyDataSet.lineWidth = 2.5
+        happyDataSet.drawCirclesEnabled = false
+        happyDataSet.mode = LineChartDataSet.Mode.cubicBezier
+        happyDataSet.cubicIntensity = 0.15
         
-        var dataEntries3: [ChartDataEntry] = []
+        prideDataSet.setColor(NSUIColor.green)
+        prideDataSet.lineWidth = 2.5
+        prideDataSet.drawCirclesEnabled = false
+        prideDataSet.mode = LineChartDataSet.Mode.cubicBezier
+        prideDataSet.cubicIntensity = 0.15
         
-        
-        dataEntries3.append(ChartDataEntry(x: 0, y: 1))
-        dataEntries3.append(ChartDataEntry(x: 1, y: -2))
-        dataEntries3.append(ChartDataEntry(x: 2, y: 2))
-        dataEntries3.append(ChartDataEntry(x: 3, y: 1))
-        dataEntries3.append(ChartDataEntry(x: 4, y: -2))
-        dataEntries3.append(ChartDataEntry(x: 5, y: 2))
-        dataEntries3.append(ChartDataEntry(x: 6, y: 1))
-        dataEntries3.append(ChartDataEntry(x: 7, y: -2))
-        dataEntries3.append(ChartDataEntry(x: 8, y: 2))
-        dataEntries3.append(ChartDataEntry(x: 9, y: -2))
-        
-        let lineDataSet = LineChartDataSet(values: dataEntries1, label: "Happiness")
-        
-        let lineDataSet2 = LineChartDataSet(values: dataEntries2, label: "Pride")
-        
-        let lineDataSet3 = LineChartDataSet(values: dataEntries3, label: "Relaxedness")
-        
-        lineDataSet.setColor(NSUIColor.blue)
-        lineDataSet.drawCirclesEnabled = false
-        lineDataSet.mode = LineChartDataSet.Mode.cubicBezier
-        
-        lineDataSet2.setColor(NSUIColor.green)
-        lineDataSet2.drawCirclesEnabled = false
-        lineDataSet2.mode = LineChartDataSet.Mode.cubicBezier
-        
-        lineDataSet3.setColor(NSUIColor.red)
-        lineDataSet3.drawCirclesEnabled = false
-        lineDataSet3.mode = LineChartDataSet.Mode.cubicBezier
+        calmDataSet.setColor(NSUIColor.red)
+        calmDataSet.lineWidth = 2.5
+        calmDataSet.drawCirclesEnabled = false
+        calmDataSet.mode = LineChartDataSet.Mode.cubicBezier
+        calmDataSet.cubicIntensity = 0.15
 
-        let lineData = LineChartData(dataSets: [lineDataSet, lineDataSet2, lineDataSet3])
+        let lineData = LineChartData(dataSets: [happyDataSet, prideDataSet, calmDataSet])
+        lineData.setDrawValues(false)
         
         lineChartView.data = lineData
+        lineChartView.chartDescription?.enabled = false
+        
+        let xaxis = lineChartView.xAxis
+        xaxis.valueFormatter = axisFormatDelegate
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
@@ -132,4 +118,14 @@ class GraphViewController: UIViewController, ChartViewDelegate {
     }
     */
 
+}
+
+// MARK: axisFormatDelegate
+extension GraphViewController: IAxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        let dateFormatter = DateFormatter()
+        let i: Int = Int(value)
+        dateFormatter.dateFormat = "MMM d"
+        return dateFormatter.string(from: logs[i].date)
+    }
 }
