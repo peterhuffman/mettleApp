@@ -21,6 +21,8 @@
 		34C690BF1EB15A2200A01B76 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C690BE1EB15A2200A01B76 /* CustomCell.swift */; };
 		A35D8F021EB1749B000F4BEB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D8F011EB1749B000F4BEB /* SettingsTableViewController.swift */; };
 		A35D8F051EB17942000F4BEB /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D8F041EB17942000F4BEB /* SwitchCell.swift */; };
+		A37577C11EBF857F003F6175 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37577C01EBF857F003F6175 /* GraphViewController.swift */; };
+		A37577C31EBFBD0C003F6175 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37577C21EBFBD0C003F6175 /* Log.swift */; };
 		A393F52C1EB18548005CA614 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A393F52B1EB18548005CA614 /* DatePickerCell.swift */; };
 		F23AE70C2528C5A5581C8CAF /* Pods_Mettle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E09EBC890ED753E4B2F5DC /* Pods_Mettle.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +47,8 @@
 		94E09EBC890ED753E4B2F5DC /* Pods_Mettle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mettle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35D8F011EB1749B000F4BEB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A35D8F041EB17942000F4BEB /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		A37577C01EBF857F003F6175 /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		A37577C21EBFBD0C003F6175 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A393F52B1EB18548005CA614 /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +89,8 @@
 				13634BD81EABE2DA00D8CC25 /* ViewController.swift */,
 				13E62F3C1EB011360067C2C4 /* LogListingController.swift */,
 				13634BDA1EABE2DA00D8CC25 /* Main.storyboard */,
+				A37577C01EBF857F003F6175 /* GraphViewController.swift */,
+				A37577C21EBFBD0C003F6175 /* Log.swift */,
 				A35D8F031EB17654000F4BEB /* Settings */,
 				13E62F3E1EB012190067C2C4 /* LogListingCell.swift */,
 				13E62F401EB014C90067C2C4 /* LogCollection.swift */,
@@ -257,6 +263,8 @@
 				13E62F411EB014C90067C2C4 /* LogCollection.swift in Sources */,
 				A393F52C1EB18548005CA614 /* DatePickerCell.swift in Sources */,
 				A35D8F021EB1749B000F4BEB /* SettingsTableViewController.swift in Sources */,
+				A37577C11EBF857F003F6175 /* GraphViewController.swift in Sources */,
+				A37577C31EBFBD0C003F6175 /* Log.swift in Sources */,
 				13E62F3F1EB012190067C2C4 /* LogListingCell.swift in Sources */,
 				13634BD71EABE2DA00D8CC25 /* AppDelegate.swift in Sources */,
 				34B7218F1EB17DF0004355EE /* CalendarViewController.swift in Sources */,
