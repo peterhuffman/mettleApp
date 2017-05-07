@@ -466,45 +466,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noImageCell" rowHeight="84" id="i8b-s8-Lnv" customClass="LogListingCell" customModule="Mettle" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logCell" rowHeight="84" id="i8b-s8-Lnv" customClass="LogListingCell" customModule="Mettle" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i8b-s8-Lnv" id="YOe-sY-BEX">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UH6-2d-hnH">
-                                            <rect key="frame" x="8" y="0.0" width="36" height="20.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpH-iD-6Ww">
-                                                    <rect key="frame" x="0.0" y="0.0" width="36" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gwe-fO-5gC">
-                                            <rect key="frame" x="292" y="5" width="75" height="75"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gwe-fO-5gC">
+                                            <rect key="frame" x="296" y="4" width="75" height="76"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="75" id="lIG-1r-ChO"/>
+                                            </constraints>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Entry Notes" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEN-On-Uis">
-                                            <rect key="frame" x="8" y="18" width="276" height="60"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFC-9g-ACA">
+                                            <rect key="frame" x="16" y="12" width="276" height="59.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJn-me-FDN" customClass="customCellView" customModule="Mettle" customModuleProvider="target">
+                                            <rect key="frame" x="296" y="4" width="75" height="75"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="75" id="bQC-av-OZg"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="UH6-2d-hnH" firstAttribute="top" secondItem="YOe-sY-BEX" secondAttribute="top" id="2GA-bQ-3gR"/>
-                                        <constraint firstItem="UH6-2d-hnH" firstAttribute="leading" secondItem="YOe-sY-BEX" secondAttribute="leadingMargin" id="JeS-lK-2gm"/>
+                                        <constraint firstAttribute="trailing" secondItem="hJn-me-FDN" secondAttribute="trailing" constant="4" id="00o-Eg-4ow"/>
+                                        <constraint firstItem="hJn-me-FDN" firstAttribute="top" secondItem="YOe-sY-BEX" secondAttribute="top" constant="4" id="1gt-5o-3Ef"/>
+                                        <constraint firstItem="gwe-fO-5gC" firstAttribute="top" secondItem="YOe-sY-BEX" secondAttribute="top" constant="4" id="6ir-7d-VqT"/>
+                                        <constraint firstAttribute="bottom" secondItem="hJn-me-FDN" secondAttribute="bottom" constant="4" id="DKh-1v-Gpj"/>
+                                        <constraint firstItem="gwe-fO-5gC" firstAttribute="leading" secondItem="aFC-9g-ACA" secondAttribute="trailing" constant="4" id="Mtt-Cg-OHM"/>
+                                        <constraint firstItem="aFC-9g-ACA" firstAttribute="leading" secondItem="YOe-sY-BEX" secondAttribute="leadingMargin" constant="8" id="i54-gj-iCo"/>
+                                        <constraint firstItem="aFC-9g-ACA" firstAttribute="top" secondItem="YOe-sY-BEX" secondAttribute="topMargin" constant="4" id="iC7-A9-He9"/>
+                                        <constraint firstAttribute="bottom" secondItem="gwe-fO-5gC" secondAttribute="bottom" constant="4" id="oyU-iP-ahv"/>
+                                        <constraint firstAttribute="trailing" secondItem="gwe-fO-5gC" secondAttribute="trailing" constant="4" id="rPA-wO-2ng"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="aFC-9g-ACA" secondAttribute="bottom" constant="4" id="vbK-Bl-PLe"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cellImageView" destination="gwe-fO-5gC" id="fPs-oR-pqi"/>
-                                    <outlet property="dateLabel" destination="QpH-iD-6Ww" id="Hzb-Th-o5M"/>
-                                    <outlet property="entryField" destination="XEN-On-Uis" id="q2D-gP-Nmj"/>
+                                    <outlet property="cellCustomView" destination="hJn-me-FDN" id="PG4-7x-Elq"/>
+                                    <outlet property="cellImageView" destination="gwe-fO-5gC" id="rxu-4J-Ded"/>
+                                    <outlet property="dateLabel" destination="aFC-9g-ACA" id="co2-1q-kDb"/>
                                     <segue destination="7wi-yz-YvQ" kind="show" identifier="EditLog" id="QGp-uR-nYd"/>
                                 </connections>
                             </tableViewCell>

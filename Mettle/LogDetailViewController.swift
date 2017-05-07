@@ -120,6 +120,7 @@ class LogDetailViewController: UIViewController, UINavigationControllerDelegate,
             dateFormatter.timeStyle = .short
             navigationItem.title = dateFormatter.string(from: date)
             dateTextField.text = dateFormatter.string(from: date)
+            dateSelected = date
             textView.text = text
             hsSlider.value = values[0]
             psSlider.value = values[1]
@@ -253,19 +254,8 @@ class LogDetailViewController: UIViewController, UINavigationControllerDelegate,
             print("Directory already created.")
         }
         
-        do {
-            let items = try fm.contentsOfDirectory(atPath: dirPath)
-            
-            for item in items {
-                print("Found \(item)")
-            }
-        } catch {
-            // failed to read directory – bad permissions, perhaps?
-        }
-        
         let filePath = dirPath.appending("/" + image + ".png")
         let imageData = UIImagePNGRepresentation(imageView.image!)
-        print(filePath)
         if (fm.fileExists(atPath: filePath)) {
             try! fm.removeItem(atPath: filePath)
         }
@@ -284,9 +274,7 @@ class LogDetailViewController: UIViewController, UINavigationControllerDelegate,
     func loadImage(image: String) {
         let fm = FileManager.default
         let dirPath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("userImages")
-        print(dirPath)
         let imagePath = dirPath.appending("/" + image + ".png")
-        print(imagePath)
         if fm.fileExists(atPath: imagePath) {
             imageView.image = UIImage(contentsOfFile: imagePath)
         } else {

@@ -78,7 +78,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
     /* Get a table cell loaded with the right data for the entry at indexPath (section/row)*/
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // get one of our custom cells, building or reusing as needed
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "noImageCell", for: indexPath) as? LogListingCell else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "logCell", for: indexPath) as? LogListingCell else{
             fatalError("Can't get cell of the right kind")
         }
         
@@ -113,10 +113,6 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
 //        
 //        return dateFormatter.string(from: newDate)
 //    }
-    
-    /*
-        YOU ARE HERE
-     */
     
     /* Provides the edit functionality (deleteing rows) */
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
