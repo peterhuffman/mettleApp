@@ -19,10 +19,10 @@
 		13E62F431EB0159D0067C2C4 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */; };
 		34B7218F1EB17DF0004355EE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B7218E1EB17DF0004355EE /* CalendarViewController.swift */; };
 		34C690BF1EB15A2200A01B76 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C690BE1EB15A2200A01B76 /* CustomCell.swift */; };
-		F23AE70C2528C5A5581C8CAF /* Pods_Mettle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E09EBC890ED753E4B2F5DC /* Pods_Mettle.framework */; };
 		A35D8F021EB1749B000F4BEB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D8F011EB1749B000F4BEB /* SettingsTableViewController.swift */; };
 		A35D8F051EB17942000F4BEB /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D8F041EB17942000F4BEB /* SwitchCell.swift */; };
 		A393F52C1EB18548005CA614 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A393F52B1EB18548005CA614 /* DatePickerCell.swift */; };
+		F23AE70C2528C5A5581C8CAF /* Pods_Mettle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E09EBC890ED753E4B2F5DC /* Pods_Mettle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
