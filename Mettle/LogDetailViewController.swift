@@ -12,6 +12,7 @@ class LogDetailViewController: UIViewController, UINavigationControllerDelegate,
     
     var type: DetailType = .new
     var callback: ((Date, String, [Float], Data)->Void)?
+    var dateSelected: Date!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var entryText: UITextView!

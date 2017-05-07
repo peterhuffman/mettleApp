@@ -71,8 +71,8 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         
         let sectionInfo = sections[section]
         
-//        return sectionInfo.numberOfObjects
-        return 1
+        return sectionInfo.numberOfObjects
+//        return 1
     }
     
     /* Get a table cell loaded with the right data for the entry at indexPath (section/row)*/
