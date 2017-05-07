@@ -93,10 +93,18 @@
 				13634BE21EABE2DA00D8CC25 /* LaunchScreen.storyboard */,
 				13634BE51EABE2DA00D8CC25 /* Info.plist */,
 				13634BDD1EABE2DA00D8CC25 /* Mettle.xcdatamodeld */,
+				345C02E21EBF745B00754479 /* Calendar */,
+			);
+			path = Mettle;
+			sourceTree = "<group>";
+		};
+		345C02E21EBF745B00754479 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
 				34C690BE1EB15A2200A01B76 /* CustomCell.swift */,
 				34B7218E1EB17DF0004355EE /* CalendarViewController.swift */,
 			);
-			path = Mettle;
+			name = Calendar;
 			sourceTree = "<group>";
 		};
 		4E3A7D7E0D06A2B63D605709 /* Pods */ = {
