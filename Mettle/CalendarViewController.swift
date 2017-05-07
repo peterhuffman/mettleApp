@@ -8,6 +8,7 @@
 
 import UIKit
 import JTAppleCalendar
+import CoreData
 
 class CalendarViewController: UIViewController {
     let formatter = DateFormatter()
@@ -19,14 +20,22 @@ class CalendarViewController: UIViewController {
     let selectedMonthColor = UIColor.white
     let currentDateSelectedMonthColor = UIColor.gray
     
+    
+    private let logs = LogCollection(){
+        print("Core Data connected")
+        
+    }
+    
     @IBOutlet weak var dateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCalendar()
-        
         // Do any additional setup after loading the view.
     }
+    
+    
+    /* Calendar Functions */
     
     func handleCellTextColor(cell: JTAppleCell?, cellState: CellState){
         guard let validCell = cell as? CustomCell else { return }
