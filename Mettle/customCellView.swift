@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class customCellView: UIView {
 
     private var viewCenter: CGPoint {
