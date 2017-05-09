@@ -490,7 +490,7 @@
         <!--Graph-->
         <scene sceneID="rBd-dR-mfn">
             <objects>
-                <viewController id="9xL-pW-L2g" sceneMemberID="viewController">
+                <viewController id="9xL-pW-L2g" customClass="GraphViewController" customModule="Mettle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xmE-9j-hIZ"/>
                         <viewControllerLayoutGuide type="bottom" id="ycX-n8-3Xt"/>
@@ -498,13 +498,51 @@
                     <view key="view" contentMode="scaleToFill" id="pM0-fR-JFX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UoO-6W-nb3" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="68" width="343" height="313"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SWv-h5-Dfl">
+                                <rect key="frame" x="34" y="28" width="306" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="10 Days"/>
+                                    <segment title="30 Days"/>
+                                    <segment title="60 Days"/>
+                                    <segment title="120 Days"/>
+                                </segments>
+                                <connections>
+                                    <action selector="valueChanged:" destination="9xL-pW-L2g" eventType="valueChanged" id="Q25-0y-gUD"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ySi-BT-SeB">
+                                <rect key="frame" x="34" y="389" width="306" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Happiness"/>
+                                    <segment title="Pride"/>
+                                    <segment title="Calmness"/>
+                                    <segment title="All"/>
+                                </segments>
+                                <connections>
+                                    <action selector="valueChanged:" destination="9xL-pW-L2g" eventType="valueChanged" id="vCt-US-cp9"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" image="graph" id="tw4-tH-hVZ"/>
+                    <connections>
+                        <outlet property="feelingSegment" destination="ySi-BT-SeB" id="s9l-Kp-ogp"/>
+                        <outlet property="lineChartView" destination="UoO-6W-nb3" id="yRO-gC-Ky9"/>
+                        <outlet property="segment" destination="SWv-h5-Dfl" id="wb7-mg-hJ1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ti5-FD-DEL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1145" y="2614"/>
+            <point key="canvasLocation" x="1144.8" y="2613.6431784107949"/>
         </scene>
         <!--Associations-->
         <scene sceneID="5bc-3v-ReQ">
@@ -860,6 +898,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yw1-ej-EsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2966" y="125"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="NHt-qF-BQy">
+            <objects>
+                <viewController id="K3f-Lm-WXc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kvG-f3-9Yg"/>
+                        <viewControllerLayoutGuide type="bottom" id="t1Y-Wl-ZHB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uZn-zj-a1v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yFN-gB-bly" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
