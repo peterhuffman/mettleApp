@@ -22,7 +22,7 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         fetchLogs()
         fillBuckets()
         updateChartWithData()
-        lineChartView.animate(yAxisDuration: 1.0)
+        lineChartView.animate(yAxisDuration: 0.75)
     }
     var logs: [Log] = []
     var buckets: [Bucket] = []
@@ -33,8 +33,6 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         
         lineChartView.delegate = self
         axisFormatDelegate = self
-        
-        //lineChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInSine)
         
         lineChartView.setScaleEnabled(false)
         lineChartView.chartDescription?.enabled = false
@@ -49,14 +47,12 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         leftAxis.axisMinimum = -3;
         leftAxis.axisMaximum = 3;
         
-        
         let xaxis = lineChartView.xAxis
         xaxis.labelPosition = XAxis.LabelPosition.bottom
         xaxis.valueFormatter = axisFormatDelegate
         
         fetchLogs()
         fillBuckets()
-        //initLogs(10)
         updateChartWithData()
         
         // Do any additional setup after loading the view.
@@ -225,6 +221,7 @@ extension GraphViewController: IAxisValueFormatter {
         let dateFormatter = DateFormatter()
         let i: Int = Int(value)
         dateFormatter.dateFormat = "MMM d"
+        
         return dateFormatter.string(from: startDates[i])
     }
 }
