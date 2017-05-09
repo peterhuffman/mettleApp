@@ -22,6 +22,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = nil
         
         // Add the edit button on the left side programmatically
         self.navigationItem.leftBarButtonItem = self.editButtonItem

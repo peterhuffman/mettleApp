@@ -31,6 +31,8 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = nil
+        
         setupCalendar()
         // Do any additional setup after loading the view.
     }

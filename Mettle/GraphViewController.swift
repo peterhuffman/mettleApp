@@ -30,6 +30,7 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = nil
         
         lineChartView.delegate = self
         axisFormatDelegate = self
@@ -90,7 +91,7 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         
         for log in logs {
             for bucket in buckets {
-                let fallsBetween = (bucket.label...bucket.end).contains(log.date as! Date)
+                let fallsBetween = (bucket.label...bucket.end).contains(log.date! as Date)
                 if (fallsBetween) {
                     bucket.add(log)
                 }

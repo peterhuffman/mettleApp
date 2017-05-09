@@ -26,7 +26,7 @@ class LogListingCell: UITableViewCell {
     
     func configureCell(log: Log){
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
+        dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         dateLabel.text = dateFormatter.string(from: (log.date as Date?)!)
         

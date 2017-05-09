@@ -64,6 +64,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1344C7551EC187AC007C528B /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				13EE6C811EBFB82A0040D4B1 /* customCellView.swift */,
+				13E62F401EB014C90067C2C4 /* LogCollection.swift */,
+				13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */,
+				13E62F3E1EB012190067C2C4 /* LogListingCell.swift */,
+				13E62F3C1EB011360067C2C4 /* LogListingController.swift */,
+			);
+			name = Log;
+			sourceTree = "<group>";
+		};
+		1344C7561EC187CD007C528B /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				A37577C01EBF857F003F6175 /* GraphViewController.swift */,
+			);
+			name = Graph;
+			sourceTree = "<group>";
+		};
+		1344C7571EC187E1007C528B /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				13634BD81EABE2DA00D8CC25 /* ViewController.swift */,
+				13634BD61EABE2DA00D8CC25 /* AppDelegate.swift */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		13634BCA1EABE2DA00D8CC25 = {
 			isa = PBXGroup;
 			children = (
@@ -85,21 +114,16 @@
 		13634BD51EABE2DA00D8CC25 /* Mettle */ = {
 			isa = PBXGroup;
 			children = (
-				13634BD61EABE2DA00D8CC25 /* AppDelegate.swift */,
-				13634BD81EABE2DA00D8CC25 /* ViewController.swift */,
-				13E62F3C1EB011360067C2C4 /* LogListingController.swift */,
-				13EE6C811EBFB82A0040D4B1 /* customCellView.swift */,
+				1344C7571EC187E1007C528B /* Other */,
 				13634BDA1EABE2DA00D8CC25 /* Main.storyboard */,
-				A37577C01EBF857F003F6175 /* GraphViewController.swift */,
+				345C02E21EBF745B00754479 /* Calendar */,
+				1344C7561EC187CD007C528B /* Graph */,
+				1344C7551EC187AC007C528B /* Log */,
 				A35D8F031EB17654000F4BEB /* Settings */,
-				13E62F3E1EB012190067C2C4 /* LogListingCell.swift */,
-				13E62F401EB014C90067C2C4 /* LogCollection.swift */,
-				13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */,
 				13634BE01EABE2DA00D8CC25 /* Assets.xcassets */,
 				13634BE21EABE2DA00D8CC25 /* LaunchScreen.storyboard */,
 				13634BE51EABE2DA00D8CC25 /* Info.plist */,
 				13634BDD1EABE2DA00D8CC25 /* Mettle.xcdatamodeld */,
-				345C02E21EBF745B00754479 /* Calendar */,
 			);
 			path = Mettle;
 			sourceTree = "<group>";
@@ -175,7 +199,7 @@
 				TargetAttributes = {
 					13634BD21EABE2DA00D8CC25 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = TSRANL5S76;
+						DevelopmentTeam = J74A9G788F;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -419,7 +443,7 @@
 			baseConfigurationReference = 0AB7C176EC6CE18ECAF9E86F /* Pods-Mettle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TSRANL5S76;
+				DEVELOPMENT_TEAM = J74A9G788F;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Pods/**",
@@ -438,7 +462,7 @@
 			baseConfigurationReference = 8A6229FAE18B81381AFA324E /* Pods-Mettle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TSRANL5S76;
+				DEVELOPMENT_TEAM = J74A9G788F;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Pods/**",
