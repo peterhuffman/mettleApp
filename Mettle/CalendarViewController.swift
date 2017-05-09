@@ -19,6 +19,7 @@ class CalendarViewController: UIViewController {
     let monthColor = UIColor.darkGray
     let selectedMonthColor = UIColor.white
     let currentDateSelectedMonthColor = UIColor.gray
+    let todayDateColor = UIColor.red
     var logList: LogListingController!
     
     
@@ -50,6 +51,9 @@ class CalendarViewController: UIViewController {
             }else{
                 validCell.DateLabel.textColor = outsideMonthColor
             }
+            if cellState.date.startOfDay == Date().startOfDay {
+                validCell.DateLabel.textColor = todayDateColor
+            }
         }
 
     }
@@ -74,6 +78,7 @@ class CalendarViewController: UIViewController {
     }
     
     func setupCalendar(){
+        calendarView.scrollToDate(Date())
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
         
