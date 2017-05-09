@@ -71,14 +71,14 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         
         let sectionInfo = sections[section]
         
-//        return sectionInfo.numberOfObjects
-        return 1
+        return sectionInfo.numberOfObjects
+//        return 1
     }
     
     /* Get a table cell loaded with the right data for the entry at indexPath (section/row)*/
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // get one of our custom cells, building or reusing as needed
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "noImageCell", for: indexPath) as? LogListingCell else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "logCell", for: indexPath) as? LogListingCell else{
             fatalError("Can't get cell of the right kind")
         }
         
@@ -114,16 +114,12 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
 //        return dateFormatter.string(from: newDate)
 //    }
     
-    /*
-        YOU ARE HERE
-     */
-    
     /* Provides the edit functionality (deleteing rows) */
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             guard let log = self.fetchedResultsController?.object(at: indexPath) as? Log else{
-                fatalError("Cannot find book")
+                fatalError("Cannot find log")
             }
             
             logs.delete(log)
@@ -183,8 +179,8 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             destination.type = .new
-            destination.callback = { (date, text, values, image) in
-                self.logs.add(date: date, text: text, values: values, image: image)
+            destination.callback = { (date, text, values, imageId) in
+                self.logs.add(date: date, text: text, values: values, imageId: imageId)
             }
         case "EditLog":
             
@@ -206,9 +202,9 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
             }
             
             
-            destination.type = .update(log.date! as Date, log.text!, [log.hsValue, log.pgValue, log.rsValue], log.image! as Data)
-            destination.callback = { (date, text, values, image) in
-                self.logs.update(oldLog: log, date: date, text: text, values: values, image: image)
+            destination.type = .update(log.date! as Date, log.text!, [log.hsValue, log.psValue, log.cuValue], log.imageId!)
+            destination.callback = { (date, text, values, imageId) in
+                self.logs.update(oldLog: log, date: date, text: text, values: values, imageId: imageId)
             }
             
             
