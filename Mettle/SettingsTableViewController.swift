@@ -7,12 +7,32 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SettingsTableViewController: UITableViewController {
+    
+    private var center: UNUserNotificationCenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        center = UNUserNotificationCenter.current()
+        let options: UNAuthorizationOptions = [.alert, .sound];
+        
+        // Authorize notifications
+        center.requestAuthorization(options: options) {
+            (granted, error) in
+            if !granted {
+                print("Something went wrong")
+            }
+        }
+        
+        center.getNotificationSettings { (settings) in
+            if settings.authorizationStatus != .authorized {
+                // Notifications not allowed
+                print("Notifications not allowed.  Add alert here.")
+            }
+        }
         
         //UserDefaults.standard.set(false, forKey: "requirePasscode")
 
@@ -104,13 +124,49 @@ class SettingsTableViewController: UITableViewController {
             UserDefaults.standard.set(triggeredSwitch.isOn, forKey: "requirePasscode")
         } else if triggeredSwitch.tag == 1 {
             UserDefaults.standard.set(triggeredSwitch.isOn, forKey: "sendNotifications")
+            
+            if triggeredSwitch.isOn {
+                newNotification(date: Date())
+            } else {
+                // Delete all notifications
+                center.removeAllPendingNotificationRequests()
+            }
         }
         
         UserDefaults.standard.synchronize()
         
         tableView.reloadData()
     }
+    @IBAction func timeChanged(_ sender: UIDatePicker) {
+        // remove all notifications
+        center.removeAllPendingNotificationRequests()
+        
+        // format date for notifications
+        
+        // create new notification with new time
+        newNotification(date: sender.date)
+    }
     
+    func newNotification(date: Date) {
+        let content = UNMutableNotificationContent()
+        content.title = "How's your mettle?"
+        content.body = "It's time to track your mood!"
+        content.sound = UNNotificationSound.default()
+        
+        // Create trigger
+        let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+        
+        // Create request
+        let identifier = "DailyLogNotification"
+        let request = UNNotificationRequest(identifier: identifier,
+                                            content: content, trigger: trigger)
+        center.add(request, withCompletionHandler: { (error) in
+            if let error = error {
+                print(error)
+            }
+        })
+    }
 
     /*
     // Override to support conditional editing of the table view.
