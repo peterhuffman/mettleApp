@@ -12,6 +12,8 @@ import CoreData
 class LogListingController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     private var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+    var dateSelected: Date!
+    
     
     private let logs = LogCollection(){
         print("Core Data connected")
@@ -37,7 +39,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         // get all books
         let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Log")
         
-        // sort by author anme and then by title
+
         let dateSort = NSSortDescriptor(key: "date", ascending: false)
         request.sortDescriptors = [dateSort]
         
@@ -51,6 +53,30 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
             fatalError("Failed to fetch data")
         }
         
+    }
+    
+    func fetchWithinDates(start: Date, end:Date){
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Log")
+        //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let dateSort = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [dateSort]
+        request.predicate = NSPredicate(format: "(date >= %@) AND (date <= %@)", start as CVarArg, end as CVarArg)
+        print(start)
+        print(end)
+        let moc = logs.managedObjectContext
+        fetchedResultsController  = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: "date", cacheName: nil)
+        fetchedResultsController.delegate = self
+        do {
+            //let results = try context.fetch(request)
+            //let  logs = results as! [Log]
+            //print(logs.count)
+            try fetchedResultsController.performFetch()
+            print(fetchedResultsController.sections!.count)
+            tableView.reloadData()
+
+        }catch{
+            fatalError("Failed to fetch data")
+        }
     }
     
     

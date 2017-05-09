@@ -179,7 +179,7 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="5et-6l-kvl"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="GK2-xv-Q0q" kind="embed" id="wHV-Mh-8aR"/>
+                                                    <segue destination="GK2-xv-Q0q" kind="embed" identifier="dateListSegue" id="wHV-Mh-8aR"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>

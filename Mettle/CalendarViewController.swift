@@ -19,6 +19,7 @@ class CalendarViewController: UIViewController {
     let monthColor = UIColor.darkGray
     let selectedMonthColor = UIColor.white
     let currentDateSelectedMonthColor = UIColor.gray
+    var logList: LogListingController!
     
     
     private let logs = LogCollection(){
@@ -58,6 +59,7 @@ class CalendarViewController: UIViewController {
             formatter.dateFormat = "MM / dd / yyyy"
             dateLabel.text = formatter.string(from: date)
             validCell.selectedView.isHidden = false
+            logList.fetchWithinDates(start: date.startOfDay, end: date.endOfDay!)
         }else{
             validCell.selectedView.isHidden = true
         }
@@ -87,6 +89,17 @@ class CalendarViewController: UIViewController {
 
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if (segue.identifier == "dateListSegue") {
+            logList = segue.destination as! LogListingController
+            // Now you have a pointer to the child view controller.
+            // You can save the reference to it, or pass data to it.
+            //childViewController.selectDate('');
+           // childViewController.fetchWithinDates(start: Date().addingTimeInterval(-60 * 5), end: Date())
+        }
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -98,6 +111,19 @@ class CalendarViewController: UIViewController {
     }
     */
 
+}
+
+extension Date {
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    
+    var endOfDay: Date? {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startOfDay)
+    }
 }
 
 extension CalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource {
