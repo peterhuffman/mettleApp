@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 import Charts
 
-class GraphViewController: UIViewController, ChartViewDelegate {
+class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var segment: UISegmentedControl!
@@ -18,28 +19,14 @@ class GraphViewController: UIViewController, ChartViewDelegate {
     weak var axisFormatDelegate: IAxisValueFormatter?
     
     @IBAction func valueChanged(_ sender: UISegmentedControl) {
-        switch segment.selectedSegmentIndex {
-        case 0:
-            initLogs(10)
-            
-        case 1:
-            initLogs(30)
-            
-        case 2:
-            initLogs(60)
-            
-        case 3:
-            initLogs(120)
-
-        default:
-            break
-        }
-        
-    
+        fetchLogs()
+        fillBuckets()
         updateChartWithData()
+        lineChartView.animate(yAxisDuration: 1.0)
     }
-    var logs: [LogMock] = []
+    var logs: [Log] = []
     var buckets: [Bucket] = []
+    var startDates: [Date] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +39,24 @@ class GraphViewController: UIViewController, ChartViewDelegate {
         lineChartView.setScaleEnabled(false)
         lineChartView.chartDescription?.enabled = false
         
-        lineChartView.animate(yAxisDuration: 3.0)
+        lineChartView.animate(yAxisDuration: 2.0)
+        
+        let rightAxis = lineChartView.rightAxis
+        rightAxis.axisMinimum = -3;
+        rightAxis.axisMaximum = 3;
+        
+        let leftAxis = lineChartView.leftAxis
+        leftAxis.axisMinimum = -3;
+        leftAxis.axisMaximum = 3;
+        
         
         let xaxis = lineChartView.xAxis
         xaxis.labelPosition = XAxis.LabelPosition.bottom
         xaxis.valueFormatter = axisFormatDelegate
         
-                
-        initLogs(10)
+        fetchLogs()
+        fillBuckets()
+        //initLogs(10)
         updateChartWithData()
         
         // Do any additional setup after loading the view.
@@ -70,37 +67,74 @@ class GraphViewController: UIViewController, ChartViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func initLogs(_ days: Int) {
-        logs = []
-        
-        for i in (1...days).reversed() {
-            var happySad:Int = Int(arc4random_uniform(7));
-            happySad -= 3
-            var prideShame:Int = Int(arc4random_uniform(7));
-            prideShame -= 3
-            var calmUpset:Int = Int(arc4random_uniform(7));
-            calmUpset -= 3
-            
-            let date = Date().addingTimeInterval(-Double(i)*24*60*60)
-            
-            logs.append(LogMock.init(happySad: Float(happySad), prideShame: Float(prideShame), calmUpset: Float(calmUpset), date: date))
-        }
-        
-        fillBuckets()
-    }
     
     func fillBuckets() {
-        buckets = []
-        let bucketSize = logs.count/10
+        var decrement : Double
+        switch segment.selectedSegmentIndex {
+        case 0: decrement = 1.0
+        case 1: decrement = 3.0
+        case 2: decrement = 6.0
+        case 3: decrement = 12.0
+        default: decrement = 1.0
+        }
+        
+        startDates = []
+        
+        for i in (1...10).reversed() {
+            startDates.append(Date().addingTimeInterval(-Double(i)*decrement*24*60*60))
+        }
+        
+        startDates.append(Date())
+        
+        var buckets : [Bucket] = []
         
         for i in 0...9 {
-            var bucketLogs: [LogMock] = []
-            let date = logs[i*bucketSize].date
-            for j in 0..<bucketSize {
-                bucketLogs.append(logs[i*bucketSize + j])
+            buckets.append(Bucket.init(start: startDates[i], end: startDates[i+1]))
+        }
+        
+        for log in logs {
+            for bucket in buckets {
+                let fallsBetween = (bucket.label...bucket.end).contains(log.date as! Date)
+                if (fallsBetween) {
+                    bucket.add(log)
+                }
             }
+        }
+        
+        for bucket in buckets {
+            bucket.calcAvg()
+        }
+        
+        self.buckets = buckets
+    }
+    
+    func fetchLogs() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Log")
+        var startDate : NSDate
+        switch segment.selectedSegmentIndex {
+        case 0:
+            startDate = Date().addingTimeInterval(-10.0*24*60*60) as NSDate
+        case 1:
+            startDate = Date().addingTimeInterval(-30.0*24*60*60) as NSDate
+        case 2:
+            startDate = Date().addingTimeInterval(-60.0*24*60*60) as NSDate
+        case 3:
+            startDate = Date().addingTimeInterval(-120.0*24*60*60) as NSDate
+        default:
+            startDate = Date().addingTimeInterval(-10.0*24*60*60) as NSDate
+        }
+        let endDate = Date() as NSDate
+        fetchRequest.predicate = NSPredicate(format: "(date >= %@) AND (date <= %@)", startDate, endDate)
+
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            let Logs = results as! [Log]
             
-            buckets.append(Bucket.init(logs: bucketLogs, label: date))
+            logs = Logs
+        } catch let error as NSError {
+            print(error)
         }
     }
     
@@ -110,11 +144,12 @@ class GraphViewController: UIViewController, ChartViewDelegate {
         var calmEntries: [ChartDataEntry] = []
         
         for i in 0..<buckets.count {
-            happyEntries.append(ChartDataEntry(x: Double(i), y: buckets[i].averageHappy))
-            prideEntries.append(ChartDataEntry(x: Double(i), y: buckets[i].averagePride))
-            calmEntries.append(ChartDataEntry(x: Double(i), y: buckets[i].averageCalm))
+            if (!buckets[i].isEmpty()) {
+                happyEntries.append(ChartDataEntry(x: Double(i), y: buckets[i].averageHappy))
+                prideEntries.append(ChartDataEntry(x: Double(i), y: buckets[i].averagePride))
+                calmEntries.append(ChartDataEntry(x: Double(i), y: buckets[i].averageCalm))
+            }
         }
-        
     
         let happyDataSet = LineChartDataSet(values: happyEntries, label: "Happiness")
         
@@ -123,22 +158,31 @@ class GraphViewController: UIViewController, ChartViewDelegate {
         let calmDataSet = LineChartDataSet(values: calmEntries, label: "Calmness")
         
         happyDataSet.setColor(NSUIColor.blue)
+        happyDataSet.setCircleColor(NSUIColor.blue)
+        happyDataSet.circleRadius = 5.0
         happyDataSet.lineWidth = 2.5
-        happyDataSet.drawCirclesEnabled = false
+        //happyDataSet.drawCircleHoleEnabled = false
+        //happyDataSet.drawCirclesEnabled = false
         happyDataSet.mode = LineChartDataSet.Mode.cubicBezier
-        happyDataSet.cubicIntensity = 0.15
+        happyDataSet.cubicIntensity = 0.125
         
         prideDataSet.setColor(NSUIColor.green)
+        prideDataSet.setCircleColor(NSUIColor.green)
+        prideDataSet.circleRadius = 5.0
         prideDataSet.lineWidth = 2.5
-        prideDataSet.drawCirclesEnabled = false
+        //prideDataSet.drawCircleHoleEnabled = false
+        //prideDataSet.drawCirclesEnabled = false
         prideDataSet.mode = LineChartDataSet.Mode.cubicBezier
-        prideDataSet.cubicIntensity = 0.15
+        prideDataSet.cubicIntensity = 0.125
         
         calmDataSet.setColor(NSUIColor.red)
+        calmDataSet.setCircleColor(NSUIColor.red)
+        calmDataSet.circleRadius = 5.0
         calmDataSet.lineWidth = 2.5
-        calmDataSet.drawCirclesEnabled = false
+        //calmDataSet.drawCircleHoleEnabled = false
+        //calmDataSet.drawCirclesEnabled = false
         calmDataSet.mode = LineChartDataSet.Mode.cubicBezier
-        calmDataSet.cubicIntensity = 0.15
+        calmDataSet.cubicIntensity = 0.125
         
         var lineData: LineChartData
         switch feelingSegment.selectedSegmentIndex {
@@ -181,46 +225,47 @@ extension GraphViewController: IAxisValueFormatter {
         let dateFormatter = DateFormatter()
         let i: Int = Int(value)
         dateFormatter.dateFormat = "MMM d"
-        return dateFormatter.string(from: buckets[i].label)
+        return dateFormatter.string(from: startDates[i])
     }
 }
 
 class Bucket{
-    var logs: [LogMock] = []
+    var logs: [Log] = []
     var label: Date
+    var end: Date
     var averageHappy: Double
     var averagePride: Double
     var averageCalm: Double
     
-    init(logs: [LogMock], label: Date) {
-        self.logs = logs
-        self.label = label
+    init(start: Date, end: Date) {
+        self.label = start
+        self.end = end
         
+        self.averageHappy = 0.0
+        self.averagePride = 0.0
+        self.averageCalm = 0.0
+    }
+    
+    func add(_ log: Log) {
+        logs.append(log)
+    }
+    
+    func calcAvg() {
         var happyAvg = 0.0
         var prideAvg = 0.0
         var calmAvg = 0.0
         for log in logs {
-            happyAvg += Double(log.happySad)
-            prideAvg += Double(log.prideShame)
-            calmAvg += Double(log.calmUpset)
+            happyAvg += Double(log.hsValue)
+            prideAvg += Double(log.psValue)
+            calmAvg += Double(log.cuValue)
         }
         
         self.averageHappy = happyAvg/Double(logs.count)
         self.averagePride = prideAvg/Double(logs.count)
         self.averageCalm = calmAvg/Double(logs.count)
     }
-}
-
-class LogMock{
-    var happySad: Float
-    var prideShame: Float
-    var calmUpset: Float
-    var date: Date
     
-    init(happySad: Float, prideShame: Float, calmUpset: Float, date: Date) {
-        self.happySad = happySad
-        self.prideShame = prideShame
-        self.calmUpset = calmUpset
-        self.date = date
+    func isEmpty() -> Bool {
+        return !(logs.count > 0)
     }
 }
