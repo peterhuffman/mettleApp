@@ -35,16 +35,16 @@ class LogCollection{
     }
     
     /* Add a new book to the collection */
-    func add(date: Date, text: String, values: [Float], image: Data){
+    func add(date: Date, text: String, values: [Float], imageId: String){
         var log:Log!
         managedObjectContext.performAndWait {
             log = Log(context: self.managedObjectContext)
             log.date = date as NSDate
             log.text = text
             log.hsValue = values[0]
-            log.pgValue = values[1]
-            log.rsValue = values[2]
-            log.image = image as NSData
+            log.psValue = values[1]
+            log.cuValue = values[2]
+            log.imageId = imageId
             self.saveChanges()
         }
     }
@@ -53,13 +53,13 @@ class LogCollection{
      
      We make this a seperate function rather than setting the values directly so that we can use findAuthor and save changes.
      */
-    func update(oldLog: Log, date: Date, text: String, values: [Float], image: Data){
+    func update(oldLog: Log, date: Date, text: String, values: [Float], imageId: String){
         oldLog.date = date as NSDate
         oldLog.text = text
         oldLog.hsValue = values[0]
-        oldLog.pgValue = values[1]
-        oldLog.rsValue = values[2]
-        oldLog.image = image as NSData
+        oldLog.psValue = values[1]
+        oldLog.cuValue = values[2]
+        oldLog.imageId = imageId
         self.saveChanges()
     }
     
@@ -67,6 +67,15 @@ class LogCollection{
      Remove a book from the collection
      */
     func delete(_ log: Log){
+        
+        // Remove associated photo before deleting log
+        let fm = FileManager.default
+        let dirPath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("userImages")
+        let imagePath = dirPath.appending("/" + log.imageId! + ".png")
+        if fm.fileExists(atPath: imagePath) {
+            try! fm.removeItem(atPath: imagePath)
+        }
+        
         managedObjectContext.delete(log)
         self.saveChanges()
     }

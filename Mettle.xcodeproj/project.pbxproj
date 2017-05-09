@@ -17,6 +17,7 @@
 		13E62F3F1EB012190067C2C4 /* LogListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F3E1EB012190067C2C4 /* LogListingCell.swift */; };
 		13E62F411EB014C90067C2C4 /* LogCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F401EB014C90067C2C4 /* LogCollection.swift */; };
 		13E62F431EB0159D0067C2C4 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */; };
+		13EE6C821EBFB82A0040D4B1 /* customCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE6C811EBFB82A0040D4B1 /* customCellView.swift */; };
 		34B7218F1EB17DF0004355EE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B7218E1EB17DF0004355EE /* CalendarViewController.swift */; };
 		34C690BF1EB15A2200A01B76 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C690BE1EB15A2200A01B76 /* CustomCell.swift */; };
 		A35D8F021EB1749B000F4BEB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D8F011EB1749B000F4BEB /* SettingsTableViewController.swift */; };
@@ -39,6 +40,7 @@
 		13E62F3E1EB012190067C2C4 /* LogListingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogListingCell.swift; sourceTree = "<group>"; };
 		13E62F401EB014C90067C2C4 /* LogCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCollection.swift; sourceTree = "<group>"; };
 		13E62F421EB0159D0067C2C4 /* LogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
+		13EE6C811EBFB82A0040D4B1 /* customCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customCellView.swift; sourceTree = "<group>"; };
 		34B7218E1EB17DF0004355EE /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		34C690BE1EB15A2200A01B76 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		8A6229FAE18B81381AFA324E /* Pods-Mettle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mettle.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mettle/Pods-Mettle.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				13634BD61EABE2DA00D8CC25 /* AppDelegate.swift */,
 				13634BD81EABE2DA00D8CC25 /* ViewController.swift */,
 				13E62F3C1EB011360067C2C4 /* LogListingController.swift */,
+				13EE6C811EBFB82A0040D4B1 /* customCellView.swift */,
 				13634BDA1EABE2DA00D8CC25 /* Main.storyboard */,
 				A35D8F031EB17654000F4BEB /* Settings */,
 				13E62F3E1EB012190067C2C4 /* LogListingCell.swift */,
@@ -269,6 +272,7 @@
 				13634BD71EABE2DA00D8CC25 /* AppDelegate.swift in Sources */,
 				34B7218F1EB17DF0004355EE /* CalendarViewController.swift in Sources */,
 				34C690BF1EB15A2200A01B76 /* CustomCell.swift in Sources */,
+				13EE6C821EBFB82A0040D4B1 /* customCellView.swift in Sources */,
 				13634BDF1EABE2DA00D8CC25 /* Mettle.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
