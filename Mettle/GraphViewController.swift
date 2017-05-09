@@ -12,10 +12,34 @@ import Charts
 class GraphViewController: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var segment: UISegmentedControl!
+    @IBOutlet weak var feelingSegment: UISegmentedControl!
     
     weak var axisFormatDelegate: IAxisValueFormatter?
     
+    @IBAction func valueChanged(_ sender: UISegmentedControl) {
+        switch segment.selectedSegmentIndex {
+        case 0:
+            initLogs(10)
+            
+        case 1:
+            initLogs(30)
+            
+        case 2:
+            initLogs(60)
+            
+        case 3:
+            initLogs(120)
+
+        default:
+            break
+        }
+        
+    
+        updateChartWithData()
+    }
     var logs: [LogMock] = []
+    var buckets: [Bucket] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +50,15 @@ class GraphViewController: UIViewController, ChartViewDelegate {
         //lineChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInSine)
         
         lineChartView.setScaleEnabled(false)
+        lineChartView.chartDescription?.enabled = false
         
+        lineChartView.animate(yAxisDuration: 3.0)
+        
+        let xaxis = lineChartView.xAxis
+        xaxis.labelPosition = XAxis.LabelPosition.bottom
+        xaxis.valueFormatter = axisFormatDelegate
+        
+                
         initLogs(10)
         updateChartWithData()
         
@@ -39,6 +71,8 @@ class GraphViewController: UIViewController, ChartViewDelegate {
     }
     
     func initLogs(_ days: Int) {
+        logs = []
+        
         for i in (1...days).reversed() {
             var happySad:Int = Int(arc4random_uniform(7));
             happySad -= 3
@@ -51,6 +85,23 @@ class GraphViewController: UIViewController, ChartViewDelegate {
             
             logs.append(LogMock.init(happySad: Float(happySad), prideShame: Float(prideShame), calmUpset: Float(calmUpset), date: date))
         }
+        
+        fillBuckets()
+    }
+    
+    func fillBuckets() {
+        buckets = []
+        let bucketSize = logs.count/10
+        
+        for i in 0...9 {
+            var bucketLogs: [LogMock] = []
+            let date = logs[i*bucketSize].date
+            for j in 0..<bucketSize {
+                bucketLogs.append(logs[i*bucketSize + j])
+            }
+            
+            buckets.append(Bucket.init(logs: bucketLogs, label: date))
+        }
     }
     
     func updateChartWithData() {
@@ -58,18 +109,18 @@ class GraphViewController: UIViewController, ChartViewDelegate {
         var prideEntries: [ChartDataEntry] = []
         var calmEntries: [ChartDataEntry] = []
         
-        for i in 0..<logs.count {
-            happyEntries.append(ChartDataEntry(x: Double(i), y: Double(logs[i].happySad)))
-            prideEntries.append(ChartDataEntry(x: Double(i), y: Double(logs[i].prideShame)))
-            calmEntries.append(ChartDataEntry(x: Double(i), y: Double(logs[i].calmUpset)))
+        for i in 0..<buckets.count {
+            happyEntries.append(ChartDataEntry(x: Double(i), y: buckets[i].averageHappy))
+            prideEntries.append(ChartDataEntry(x: Double(i), y: buckets[i].averagePride))
+            calmEntries.append(ChartDataEntry(x: Double(i), y: buckets[i].averageCalm))
         }
         
     
-        let happyDataSet = LineChartDataSet(values: happyEntries, label: "Happy/Sad")
+        let happyDataSet = LineChartDataSet(values: happyEntries, label: "Happiness")
         
-        let prideDataSet = LineChartDataSet(values: prideEntries, label: "Pride/Shame")
+        let prideDataSet = LineChartDataSet(values: prideEntries, label: "Pride")
         
-        let calmDataSet = LineChartDataSet(values: calmEntries, label: "Calm/Upset")
+        let calmDataSet = LineChartDataSet(values: calmEntries, label: "Calmness")
         
         happyDataSet.setColor(NSUIColor.blue)
         happyDataSet.lineWidth = 2.5
@@ -88,15 +139,19 @@ class GraphViewController: UIViewController, ChartViewDelegate {
         calmDataSet.drawCirclesEnabled = false
         calmDataSet.mode = LineChartDataSet.Mode.cubicBezier
         calmDataSet.cubicIntensity = 0.15
-
-        let lineData = LineChartData(dataSets: [happyDataSet, prideDataSet, calmDataSet])
+        
+        var lineData: LineChartData
+        switch feelingSegment.selectedSegmentIndex {
+        case 0: lineData = LineChartData(dataSet: happyDataSet)
+        case 1: lineData = LineChartData(dataSet: prideDataSet)
+        case 2: lineData = LineChartData(dataSet: calmDataSet)
+        case 3: lineData = LineChartData(dataSets: [happyDataSet, prideDataSet, calmDataSet])
+        default:
+            lineData = LineChartData(dataSets: [happyDataSet, prideDataSet, calmDataSet])
+        }
         lineData.setDrawValues(false)
         
         lineChartView.data = lineData
-        lineChartView.chartDescription?.enabled = false
-        
-        let xaxis = lineChartView.xAxis
-        xaxis.valueFormatter = axisFormatDelegate
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
@@ -126,6 +181,46 @@ extension GraphViewController: IAxisValueFormatter {
         let dateFormatter = DateFormatter()
         let i: Int = Int(value)
         dateFormatter.dateFormat = "MMM d"
-        return dateFormatter.string(from: logs[i].date)
+        return dateFormatter.string(from: buckets[i].label)
+    }
+}
+
+class Bucket{
+    var logs: [LogMock] = []
+    var label: Date
+    var averageHappy: Double
+    var averagePride: Double
+    var averageCalm: Double
+    
+    init(logs: [LogMock], label: Date) {
+        self.logs = logs
+        self.label = label
+        
+        var happyAvg = 0.0
+        var prideAvg = 0.0
+        var calmAvg = 0.0
+        for log in logs {
+            happyAvg += Double(log.happySad)
+            prideAvg += Double(log.prideShame)
+            calmAvg += Double(log.calmUpset)
+        }
+        
+        self.averageHappy = happyAvg/Double(logs.count)
+        self.averagePride = prideAvg/Double(logs.count)
+        self.averageCalm = calmAvg/Double(logs.count)
+    }
+}
+
+class LogMock{
+    var happySad: Float
+    var prideShame: Float
+    var calmUpset: Float
+    var date: Date
+    
+    init(happySad: Float, prideShame: Float, calmUpset: Float, date: Date) {
+        self.happySad = happySad
+        self.prideShame = prideShame
+        self.calmUpset = calmUpset
+        self.date = date
     }
 }
