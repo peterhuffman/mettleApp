@@ -218,7 +218,8 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if (segue.identifier == "dateListSegue") {
+        if (segue.identifier == "graphListSegue") {
+            //let destinationNavController = segue.destination as! UINavigationController
             logList = segue.destination as! LogListingController
             // Now you have a pointer to the child view controller.
             // You can save the reference to it, or pass data to it.
