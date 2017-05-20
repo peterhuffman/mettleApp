@@ -25,6 +25,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         self.title = nil
         
         // Add the edit button on the left side programmatically
+        self.editButtonItem.tintColor = UIColor.init(rgb: 0x2681CC)
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         initializeFetchResultsController()
@@ -138,7 +139,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         
-        return sectionInfo.name
+        return dateFormatter.string(from: newDate)
     }
     
     /* Provides the edit functionality (deleteing rows) */
@@ -272,6 +273,22 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
     @IBAction func unwindFromEdit(sender: UIStoryboardSegue){
         tableView.reloadData()
     }
+}
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
     
-    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
 }

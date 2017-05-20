@@ -16,12 +16,13 @@ class LogDetailViewController: UIViewController, UINavigationControllerDelegate,
     var imageSelected: String?
 
     // UI Elements
+    @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton1: UIButton!
-    @IBOutlet weak var cameraButton2: UIButton!
+//    @IBOutlet weak var cameraButton2: UIButton!
     @IBOutlet weak var libraryButton1: UIButton!
-    @IBOutlet weak var libraryButton2: UIButton!
+//    @IBOutlet weak var libraryButton2: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var hsSlider: UISlider!
@@ -73,13 +74,13 @@ class LogDetailViewController: UIViewController, UINavigationControllerDelegate,
         deleteButton.isEnabled = false
         deleteButton.isHidden = true
         cameraButton1.isHidden = false
-        cameraButton2.isHidden = false
+//        cameraButton2.isHidden = false
         libraryButton1.isHidden = false
-        libraryButton2.isHidden = false
+//        libraryButton2.isHidden = false
         cameraButton1.isEnabled = true
-        cameraButton2.isEnabled = true
+//        cameraButton2.isEnabled = true
         libraryButton1.isEnabled = true
-        libraryButton2.isEnabled = true
+//        libraryButton2.isEnabled = true
     }
 
     
@@ -92,10 +93,15 @@ class LogDetailViewController: UIViewController, UINavigationControllerDelegate,
         dateTextField.delegate = self
         dateSelected = Date()
         
+        // set view radii
+        textView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = 10
+        dateView.layer.cornerRadius = 10
+        
         switch(type){
         case .new:
             imageSelected = UUID().uuidString
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor.init(rgb: 0x2681CC)
             break
         case let .update(date, text, values, imageId):
             
@@ -105,12 +111,12 @@ class LogDetailViewController: UIViewController, UINavigationControllerDelegate,
             if (imageView.image != nil) {
                 cameraButton1.isEnabled = false
                 cameraButton1.isHidden = true
-                cameraButton2.isEnabled = false
-                cameraButton2.isHidden = true
+//                cameraButton2.isEnabled = false
+//                cameraButton2.isHidden = true
                 libraryButton1.isEnabled = false
                 libraryButton1.isHidden = true
-                libraryButton2.isEnabled = false
-                libraryButton2.isHidden = true
+//                libraryButton2.isEnabled = false
+//                libraryButton2.isHidden = true
                 deleteButton.isEnabled = true
                 deleteButton.isHidden = false
             }
@@ -174,12 +180,12 @@ class LogDetailViewController: UIViewController, UINavigationControllerDelegate,
             print("setting imageView image")
             cameraButton1.isEnabled = false
             cameraButton1.isHidden = true
-            cameraButton2.isEnabled = false
-            cameraButton2.isHidden = true
+//            cameraButton2.isEnabled = false
+//            cameraButton2.isHidden = true
             libraryButton1.isEnabled = false
             libraryButton1.isHidden = true
-            libraryButton2.isEnabled = false
-            libraryButton2.isHidden = true
+//            libraryButton2.isEnabled = false
+//            libraryButton2.isHidden = true
             deleteButton.isEnabled = true
             deleteButton.isHidden = false
         } else {
@@ -196,16 +202,16 @@ class LogDetailViewController: UIViewController, UINavigationControllerDelegate,
     
     // TextView Placeholder text implementation
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor != UIColor.white {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = UIColor.white
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "How are you feeling?"
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor.lightText
         }
     }
     

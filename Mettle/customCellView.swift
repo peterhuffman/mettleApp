@@ -35,6 +35,8 @@ class customCellView: UIView {
     override func draw(_ rect: CGRect) {
 //        print("drawing cell")
         
+        self.layer.cornerRadius = 5
+        
         // Draw top bar
         let topPath = UIBezierPath()
         topPath.move(to: CGPoint(x: bounds.midX, y: barHeightConst * 1))
@@ -44,7 +46,7 @@ class customCellView: UIView {
         topPath.lineWidth = 1
         UIColor.clear.set()
         topPath.stroke()
-        UIColor.red.set()
+        UIColor.init(rgb: 0x2681CC).set()
         topPath.fill()
         
         
@@ -58,7 +60,7 @@ class customCellView: UIView {
         midPath.lineWidth = 1
         UIColor.clear.set()
         midPath.stroke()
-        UIColor.yellow.set()
+        UIColor.init(rgb: 0x2681CC).set()
         midPath.fill()
         
         // Draw bottom bar
@@ -70,7 +72,7 @@ class customCellView: UIView {
         botPath.lineWidth = 1
         UIColor.clear.set()
         botPath.stroke()
-        UIColor.blue.set()
+        UIColor.init(rgb: 0x2681CC).set()
         botPath.fill()
         
         // Draw line down the middle

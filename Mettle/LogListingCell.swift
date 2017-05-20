@@ -26,14 +26,13 @@ class LogListingCell: UITableViewCell {
     
     func configureCell(log: Log){
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
+        dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .short
         dateLabel.text = dateFormatter.string(from: (log.date as Date?)!)
         
         // If image assocated with log, load image
         if (!loadImage(image: log.imageId!)) {
             cellCustomView.updateValues(top: log.hsValue, mid: log.psValue, bot: log.cuValue)
-            cellCustomView.layer.cornerRadius = 5
             cellCustomView.isHidden = false
             cellImageView.isHidden = true
         } else {
