@@ -453,6 +453,26 @@
             </objects>
             <point key="canvasLocation" x="2837.5999999999999" y="2319.490254872564"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9xQ-0V-6tO">
+            <objects>
+                <navigationController id="JSI-C0-m5S" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="epJ-Vg-5fu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="RRY-6H-TV0">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="7wi-yz-YvQ" kind="relationship" relationship="rootViewController" id="SoK-T6-aYm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Dt-rS-WkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3750" y="2605"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="db4-iH-Sdd">
             <objects>
@@ -546,7 +566,7 @@
                                 <rect key="frame" x="0.0" y="379" width="375" height="239"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="oHl-nG-4lj" kind="embed" identifier="dateListSegue" id="IkL-Ne-hH3"/>
+                                    <segue destination="oHl-nG-4lj" kind="embed" identifier="graphListSegue" id="KwX-wp-2gO"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -981,6 +1001,7 @@
                                     <outlet property="cellCustomView" destination="XJG-zy-Aiw" id="9uY-X7-KfA"/>
                                     <outlet property="cellImageView" destination="fQI-4O-iY2" id="ksu-Yc-Hwe"/>
                                     <outlet property="dateLabel" destination="UX8-HD-1ve" id="3lR-Ud-iqs"/>
+                                    <segue destination="JSI-C0-m5S" kind="presentation" identifier="GraphLog" modalTransitionStyle="crossDissolve" id="mSU-Az-mDz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -989,10 +1010,11 @@
                             <outlet property="delegate" destination="oHl-nG-4lj" id="Oig-YL-T8B"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="ZHx-nP-zVq"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z0Z-VS-RoF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2089" y="2605"/>
+            <point key="canvasLocation" x="1994" y="2605"/>
         </scene>
     </scenes>
     <resources>
@@ -1011,6 +1033,6 @@
         <image name="upsetText" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ycZ-3v-jOA"/>
+        <segue reference="SoK-T6-aYm"/>
     </inferredMetricsTieBreakers>
 </document>
