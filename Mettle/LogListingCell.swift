@@ -33,6 +33,7 @@ class LogListingCell: UITableViewCell {
         // If image assocated with log, load image
         if (!loadImage(image: log.imageId!)) {
             cellCustomView.updateValues(top: log.hsValue, mid: log.psValue, bot: log.cuValue)
+            cellCustomView.layer.cornerRadius = 5
             cellCustomView.isHidden = false
             cellImageView.isHidden = true
         } else {

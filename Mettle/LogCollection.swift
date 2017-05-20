@@ -45,6 +45,12 @@ class LogCollection{
             log.psValue = values[1]
             log.cuValue = values[2]
             log.imageId = imageId
+            
+            // Format date for section header
+            let df = DateFormatter()
+            df.dateStyle = .medium
+            df.timeStyle = .none
+            log.sectionDate = df.date(from: df.string(from: date))! as NSDate
             self.saveChanges()
         }
     }
