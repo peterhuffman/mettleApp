@@ -46,7 +46,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         
         // Create the controller using our moc
         let moc = logs.managedObjectContext
-        fetchedResultsController  = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: "date", cacheName: nil)
+        fetchedResultsController  = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: "sectionDate", cacheName: nil)
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
@@ -65,7 +65,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         print(start)
         print(end)
         let moc = logs.managedObjectContext
-        fetchedResultsController  = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: "date", cacheName: nil)
+        fetchedResultsController  = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: "sectionDate", cacheName: nil)
         fetchedResultsController.delegate = self
         do {
             //let results = try context.fetch(request)
@@ -118,28 +118,28 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         return cell
     }
     
-//    /* Get the title to be displayed between sections */
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        guard let sections = fetchedResultsController.sections else{
-//            fatalError("No sections in fetchedResultsController")
-//        }
-//        let sectionInfo = sections[section]
-//        var newDate : Date = Date()
-//        
-//        for object in sectionInfo.objects! {
-//            switch object {
-//            case let newLog as Log:
-//                newDate = newLog.date! as Date
-//            default:
-//                print("not a log.. :/")
-//            }
-//        }
-//        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateStyle = .medium
-//        
-//        return dateFormatter.string(from: newDate)
-//    }
+    /* Get the title to be displayed between sections */
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sections = fetchedResultsController.sections else{
+            fatalError("No sections in fetchedResultsController")
+        }
+        let sectionInfo = sections[section]
+        var newDate : Date = Date()
+        
+        for object in sectionInfo.objects! {
+            switch object {
+            case let newLog as Log:
+                newDate = newLog.date! as Date
+            default:
+                print("not a log.. :/")
+            }
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        
+        return sectionInfo.name
+    }
     
     /* Provides the edit functionality (deleteing rows) */
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
