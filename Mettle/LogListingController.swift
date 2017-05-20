@@ -234,7 +234,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
                 self.logs.update(oldLog: log, date: date, text: text, values: values, imageId: imageId)
             }
             
-        case "GraphLog":
+        case "LogDetail":
             guard let navController = segue.destination as? UINavigationController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }

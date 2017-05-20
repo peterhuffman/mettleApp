@@ -279,6 +279,7 @@
                                     <outlet property="cellCustomView" destination="mNI-L4-3gL" id="hSt-9h-9PO"/>
                                     <outlet property="cellImageView" destination="jh2-Lz-On8" id="gbL-wl-Fm6"/>
                                     <outlet property="dateLabel" destination="6KQ-qF-ldX" id="7lW-HG-PiN"/>
+                                    <segue destination="JSI-C0-m5S" kind="presentation" identifier="LogDetail" modalTransitionStyle="crossDissolve" id="ChQ-QV-nCJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1001,7 +1002,7 @@
                                     <outlet property="cellCustomView" destination="XJG-zy-Aiw" id="9uY-X7-KfA"/>
                                     <outlet property="cellImageView" destination="fQI-4O-iY2" id="ksu-Yc-Hwe"/>
                                     <outlet property="dateLabel" destination="UX8-HD-1ve" id="3lR-Ud-iqs"/>
-                                    <segue destination="JSI-C0-m5S" kind="presentation" identifier="GraphLog" modalTransitionStyle="crossDissolve" id="mSU-Az-mDz"/>
+                                    <segue destination="JSI-C0-m5S" kind="presentation" identifier="LogDetail" modalTransitionStyle="crossDissolve" id="mSU-Az-mDz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1033,6 +1034,7 @@
         <image name="upsetText" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ChQ-QV-nCJ"/>
         <segue reference="SoK-T6-aYm"/>
     </inferredMetricsTieBreakers>
 </document>
