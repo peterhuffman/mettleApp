@@ -295,6 +295,7 @@
                                     <outlet property="cellCustomView" destination="mNI-L4-3gL" id="hSt-9h-9PO"/>
                                     <outlet property="cellImageView" destination="jh2-Lz-On8" id="gbL-wl-Fm6"/>
                                     <outlet property="dateLabel" destination="6KQ-qF-ldX" id="7lW-HG-PiN"/>
+                                    <segue destination="JSI-C0-m5S" kind="presentation" identifier="LogDetail" modalTransitionStyle="crossDissolve" id="ChQ-QV-nCJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -306,7 +307,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfD-h8-Ojj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1885.5999999999999" y="1220.2398800599701"/>
+            <point key="canvasLocation" x="2084" y="1211"/>
         </scene>
         <!--Settings Controller-->
         <scene sceneID="G3w-Zm-VoY">
@@ -469,6 +470,26 @@
             </objects>
             <point key="canvasLocation" x="2837.5999999999999" y="2319.490254872564"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9xQ-0V-6tO">
+            <objects>
+                <navigationController id="JSI-C0-m5S" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="epJ-Vg-5fu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="RRY-6H-TV0">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="7wi-yz-YvQ" kind="relationship" relationship="rootViewController" id="SoK-T6-aYm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Dt-rS-WkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3750" y="2605"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="db4-iH-Sdd">
             <objects>
@@ -501,7 +522,7 @@
             <objects>
                 <navigationController id="qFG-Yc-pyZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="settings" id="WBr-yA-3lp"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rw3-hH-iM8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Rw3-hH-iM8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -525,10 +546,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UoO-6W-nb3" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="24" y="88" width="327" height="370"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SWv-h5-Dfl">
                                 <rect key="frame" x="36" y="40" width="303" height="29"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -543,11 +560,9 @@
                                     <action selector="valueChanged:" destination="9xL-pW-L2g" eventType="valueChanged" id="Q25-0y-gUD"/>
                                 </connections>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ySi-BT-SeB">
-                                <rect key="frame" x="36" y="478" width="303" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="c6x-HP-wkR"/>
-                                </constraints>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ySi-BT-SeB">
+                                <rect key="frame" x="36" y="343" width="303" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Happiness"/>
                                     <segment title="Pride"/>
@@ -559,19 +574,24 @@
                                     <action selector="valueChanged:" destination="9xL-pW-L2g" eventType="valueChanged" id="vCt-US-cp9"/>
                                 </connections>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UoO-6W-nb3" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="24" y="76" width="327" height="259"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u3Y-Rn-lgh">
+                                <rect key="frame" x="0.0" y="379" width="375" height="239"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="oHl-nG-4lj" kind="embed" identifier="graphListSegue" id="KwX-wp-2gO"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SWv-h5-Dfl" firstAttribute="leading" secondItem="pM0-fR-JFX" secondAttribute="leadingMargin" constant="20" id="7Zg-fz-Gdt"/>
-                            <constraint firstItem="ycX-n8-3Xt" firstAttribute="top" secondItem="ySi-BT-SeB" secondAttribute="bottom" constant="112" id="Ci0-o7-gnH"/>
-                            <constraint firstItem="UoO-6W-nb3" firstAttribute="top" secondItem="SWv-h5-Dfl" secondAttribute="bottom" constant="20" id="DCd-4V-vG8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="UoO-6W-nb3" secondAttribute="trailing" constant="8" id="NGO-rr-Kmr"/>
-                            <constraint firstItem="ySi-BT-SeB" firstAttribute="leading" secondItem="pM0-fR-JFX" secondAttribute="leadingMargin" constant="20" id="SqX-xI-fR5"/>
                             <constraint firstItem="SWv-h5-Dfl" firstAttribute="top" secondItem="xmE-9j-hIZ" secondAttribute="bottom" constant="20" id="hIy-tv-r6T"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SWv-h5-Dfl" secondAttribute="trailing" constant="20" id="lJa-tc-9X5"/>
-                            <constraint firstItem="ySi-BT-SeB" firstAttribute="top" secondItem="UoO-6W-nb3" secondAttribute="bottom" constant="20" id="pCl-Sm-Z4D"/>
-                            <constraint firstItem="UoO-6W-nb3" firstAttribute="leading" secondItem="pM0-fR-JFX" secondAttribute="leadingMargin" constant="8" id="uhh-ib-atu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ySi-BT-SeB" secondAttribute="trailing" constant="20" id="xIi-Ha-SQO"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="graph" id="tw4-tH-hVZ"/>
@@ -583,7 +603,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ti5-FD-DEL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1144.8" y="2613.6431784107949"/>
+            <point key="canvasLocation" x="1137" y="2605"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="LY6-lr-Tu4">
@@ -907,7 +927,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sbo-7a-7vm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sbo-7a-7vm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -925,7 +945,7 @@
             <objects>
                 <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="RRe-Y0-R0W" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="u4x-s0-MNq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="u4x-s0-MNq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -937,6 +957,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yw1-ej-EsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2966" y="125"/>
+        </scene>
+        <!--Log Listing Controller-->
+        <scene sceneID="USL-cs-0bu">
+            <objects>
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="oHl-nG-4lj" customClass="LogListingController" customModule="Mettle" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rW0-kE-p9L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="239"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="separatorColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logCell" id="rV1-3o-NnY" customClass="LogListingCell" customModule="Mettle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rV1-3o-NnY" id="GY9-6s-upY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qf2-aS-r6R">
+                                            <rect key="frame" x="102" y="11" width="232" height="66"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </stackView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fQI-4O-iY2">
+                                            <rect key="frame" x="296" y="4" width="75" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="75" id="Y25-lu-oLd"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UX8-HD-1ve">
+                                            <rect key="frame" x="8" y="4" width="284" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJG-zy-Aiw" customClass="customCellView" customModule="Mettle" customModuleProvider="target">
+                                            <rect key="frame" x="296" y="4" width="75" height="36"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="75" id="Sn9-zW-Amz"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="fQI-4O-iY2" firstAttribute="top" secondItem="GY9-6s-upY" secondAttribute="top" constant="4" id="9HU-AP-8or"/>
+                                        <constraint firstAttribute="trailing" secondItem="fQI-4O-iY2" secondAttribute="trailing" constant="4" id="GG8-5O-eWg"/>
+                                        <constraint firstAttribute="bottom" secondItem="XJG-zy-Aiw" secondAttribute="bottom" constant="4" id="JEb-5K-lML"/>
+                                        <constraint firstAttribute="bottom" secondItem="fQI-4O-iY2" secondAttribute="bottom" constant="4" id="SW3-CF-d7J"/>
+                                        <constraint firstItem="XJG-zy-Aiw" firstAttribute="leading" secondItem="UX8-HD-1ve" secondAttribute="trailing" constant="4" id="SfK-m4-s59"/>
+                                        <constraint firstAttribute="trailing" secondItem="XJG-zy-Aiw" secondAttribute="trailing" constant="4" id="nGh-Ug-Zsm"/>
+                                        <constraint firstItem="XJG-zy-Aiw" firstAttribute="top" secondItem="GY9-6s-upY" secondAttribute="top" constant="4" id="oa3-0G-ie8"/>
+                                        <constraint firstItem="UX8-HD-1ve" firstAttribute="top" secondItem="GY9-6s-upY" secondAttribute="top" constant="4" id="uSi-vu-agc"/>
+                                        <constraint firstItem="UX8-HD-1ve" firstAttribute="leading" secondItem="GY9-6s-upY" secondAttribute="leading" constant="8" id="vSx-ZQ-gu4"/>
+                                        <constraint firstAttribute="bottom" secondItem="UX8-HD-1ve" secondAttribute="bottom" constant="4" id="xZH-Nr-b79"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="cellCustomView" destination="XJG-zy-Aiw" id="9uY-X7-KfA"/>
+                                    <outlet property="cellImageView" destination="fQI-4O-iY2" id="ksu-Yc-Hwe"/>
+                                    <outlet property="dateLabel" destination="UX8-HD-1ve" id="3lR-Ud-iqs"/>
+                                    <segue destination="JSI-C0-m5S" kind="presentation" identifier="LogDetail" modalTransitionStyle="crossDissolve" id="mSU-Az-mDz"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oHl-nG-4lj" id="UL9-yP-9ZE"/>
+                            <outlet property="delegate" destination="oHl-nG-4lj" id="Oig-YL-T8B"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ZHx-nP-zVq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z0Z-VS-RoF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1994" y="2605"/>
         </scene>
     </scenes>
     <resources>
@@ -955,6 +1050,7 @@
         <image name="upsetText" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QGp-uR-nYd"/>
+        <segue reference="ChQ-QV-nCJ"/>
+        <segue reference="SoK-T6-aYm"/>
     </inferredMetricsTieBreakers>
 </document>

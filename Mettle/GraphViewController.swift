@@ -16,7 +16,17 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
     @IBOutlet weak var segment: UISegmentedControl!
     @IBOutlet weak var feelingSegment: UISegmentedControl!
     
+    var logList: LogListingController!
+    
     weak var axisFormatDelegate: IAxisValueFormatter?
+    
+    var happyColor:NSUIColor = NSUIColor.red
+    var proudColor:NSUIColor = NSUIColor.yellow
+    var calmColor:NSUIColor = NSUIColor.blue
+    
+    var logs: [Log] = []
+    var buckets: [Bucket] = []
+    var startDates: [Date] = []
     
     @IBAction func valueChanged(_ sender: UISegmentedControl) {
         fetchLogs()
@@ -24,9 +34,6 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         updateChartWithData()
         lineChartView.animate(yAxisDuration: 0.75)
     }
-    var logs: [Log] = []
-    var buckets: [Bucket] = []
-    var startDates: [Date] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +41,10 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         
         lineChartView.delegate = self
         axisFormatDelegate = self
+        
+        lineChartView.legend.font = NSUIFont.systemFont(ofSize: CGFloat(17.0))
+        lineChartView.legend.formSize = CGFloat(15.0)
+        
         
         lineChartView.setScaleEnabled(false)
         lineChartView.chartDescription?.enabled = false
@@ -154,8 +165,8 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         
         let calmDataSet = LineChartDataSet(values: calmEntries, label: "Calmness")
         
-        happyDataSet.setColor(NSUIColor.blue)
-        happyDataSet.setCircleColor(NSUIColor.blue)
+        happyDataSet.setColor(happyColor)
+        happyDataSet.setCircleColor(happyColor)
         happyDataSet.circleRadius = 5.0
         happyDataSet.lineWidth = 2.5
         //happyDataSet.drawCircleHoleEnabled = false
@@ -163,8 +174,8 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         happyDataSet.mode = LineChartDataSet.Mode.cubicBezier
         happyDataSet.cubicIntensity = 0.125
         
-        prideDataSet.setColor(NSUIColor.green)
-        prideDataSet.setCircleColor(NSUIColor.green)
+        prideDataSet.setColor(proudColor)
+        prideDataSet.setCircleColor(proudColor)
         prideDataSet.circleRadius = 5.0
         prideDataSet.lineWidth = 2.5
         //prideDataSet.drawCircleHoleEnabled = false
@@ -172,8 +183,8 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         prideDataSet.mode = LineChartDataSet.Mode.cubicBezier
         prideDataSet.cubicIntensity = 0.125
         
-        calmDataSet.setColor(NSUIColor.red)
-        calmDataSet.setCircleColor(NSUIColor.red)
+        calmDataSet.setColor(calmColor)
+        calmDataSet.setCircleColor(calmColor)
         calmDataSet.circleRadius = 5.0
         calmDataSet.lineWidth = 2.5
         //calmDataSet.drawCircleHoleEnabled = false
@@ -197,10 +208,28 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         print(entry)
+        let bucket = buckets[Int(entry.x)]
+        print(bucket.label)
+        print(bucket.end)
+        if (logList != nil) {
+            logList.fetchWithinDates(start: bucket.label, end: bucket.end)
+        }
     }
     
     func chartValueNothingSelected(_ chartView: ChartViewBase) {
-
+    
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if (segue.identifier == "graphListSegue") {
+            //let destinationNavController = segue.destination as! UINavigationController
+            logList = segue.destination as! LogListingController
+            // Now you have a pointer to the child view controller.
+            // You can save the reference to it, or pass data to it.
+            //childViewController.selectDate('');
+            // childViewController.fetchWithinDates(start: Date().addingTimeInterval(-60 * 5), end: Date())
+        }
     }
     
 

@@ -234,6 +234,33 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
                 self.logs.update(oldLog: log, date: date, text: text, values: values, imageId: imageId)
             }
             
+        case "LogDetail":
+            guard let navController = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let destination = navController.topViewController as? LogDetailViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let cell = sender as? LogListingCell else{
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: cell) else{
+                fatalError("The selected cell can't be found")
+            }
+            
+            
+            guard let log = fetchedResultsController?.object(at: indexPath) as? Log else{
+                fatalError("fetched object was not a Book")
+            }
+            
+            destination.type = .update(log.date! as Date, log.text!, [log.hsValue, log.psValue, log.cuValue], log.imageId!)
+            destination.callback = { (date, text, values, imageId) in
+                self.logs.update(oldLog: log, date: date, text: text, values: values, imageId: imageId)
+            }
+            
             
         default:
             fatalError("Unexpeced segue identifier: \(String(describing: segue.identifier))")
