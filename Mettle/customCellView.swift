@@ -46,7 +46,8 @@ class customCellView: UIView {
         topPath.lineWidth = 1
         UIColor.clear.set()
         topPath.stroke()
-        UIColor.init(rgb: 0x2681CC).set()
+        UIColor.init(rgb: 0xCC0F10).set()
+//        UIColor.red.set()
         topPath.fill()
         
         
@@ -60,7 +61,8 @@ class customCellView: UIView {
         midPath.lineWidth = 1
         UIColor.clear.set()
         midPath.stroke()
-        UIColor.init(rgb: 0x2681CC).set()
+        UIColor.init(rgb: 0xEDF01C).set()
+//        UIColor.yellow.set()
         midPath.fill()
         
         // Draw bottom bar
@@ -72,7 +74,8 @@ class customCellView: UIView {
         botPath.lineWidth = 1
         UIColor.clear.set()
         botPath.stroke()
-        UIColor.init(rgb: 0x2681CC).set()
+        UIColor.init(rgb: 0x2A75B2).set()
+//        UIColor.blue.set()
         botPath.fill()
         
         // Draw line down the middle

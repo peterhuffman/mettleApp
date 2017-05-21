@@ -35,9 +35,11 @@ class LogListingCell: UITableViewCell {
             cellCustomView.updateValues(top: log.hsValue, mid: log.psValue, bot: log.cuValue)
             cellCustomView.isHidden = false
             cellImageView.isHidden = true
+            cellCustomView.layer.cornerRadius = 5
         } else {
             cellCustomView.isHidden = true
             cellImageView.isHidden = false
+            cellImageView.layer.cornerRadius = 5
         }
         
     }

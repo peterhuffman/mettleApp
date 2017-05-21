@@ -97,6 +97,8 @@ class LogDetailViewController: UIViewController, UINavigationControllerDelegate,
         textView.layer.cornerRadius = 10
         imageView.layer.cornerRadius = 10
         dateView.layer.cornerRadius = 10
+        cameraButton1.layer.cornerRadius = 10
+        libraryButton1.layer.cornerRadius = 10
         
         switch(type){
         case .new:
