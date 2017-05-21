@@ -19,8 +19,9 @@ class CalendarViewController: UIViewController {
     let monthColor = UIColor.darkGray
     let selectedMonthColor = UIColor.white
     let currentDateSelectedMonthColor = UIColor.gray
-    let todayDateColor = UIColor.red
+    let todayDateColor = UIColor.blue
     var logList: LogListingController!
+    var logDates = [Date: Bool]()
     
     
     private let logs = LogCollection(){
@@ -60,6 +61,11 @@ class CalendarViewController: UIViewController {
     
     func handleCellSelected(cell: JTAppleCell?, cellState: CellState){
         guard let validCell = cell as? CustomCell else { return }
+        if hasLog(date: cellState.date) {
+            validCell.hasLogView.isHidden = false
+        }else{
+            validCell.hasLogView.isHidden = true
+        }
         if cellState.isSelected == true {
             let date = cellState.date
             formatter.dateFormat = "MM / dd / yyyy"
@@ -78,12 +84,32 @@ class CalendarViewController: UIViewController {
     }
     
     func setupCalendar(){
+        fetchLogs()
         calendarView.scrollToDate(Date())
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
         
         calendarView.visibleDates { (visibleDates) in
             self.setupViewsOfCalendar(from: visibleDates)
+        }
+    }
+    
+    func hasLog(date: Date) -> Bool {
+        return (logDates[date.startOfDay] == true)
+    }
+    
+    func fetchLogs() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Log")
+        do {
+            let results = try context.fetch(fetchRequest)
+            let Logs = results as! [Log]
+            for var log in Logs {
+                let date = log.date as! Date
+                logDates[date.startOfDay] = true
+            }
+        } catch let error as NSError {
+            print(error)
         }
     }
     

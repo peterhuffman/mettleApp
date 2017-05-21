@@ -42,6 +42,10 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         lineChartView.delegate = self
         axisFormatDelegate = self
         
+        lineChartView.legend.font = NSUIFont.systemFont(ofSize: CGFloat(17.0))
+        lineChartView.legend.formSize = CGFloat(15.0)
+        
+        
         lineChartView.setScaleEnabled(false)
         lineChartView.chartDescription?.enabled = false
         
