@@ -191,7 +191,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ozs-X0-nh2">
                                         <rect key="frame" x="0.0" y="353" width="414" height="363"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUj-ia-T8J">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUj-ia-T8J">
                                                 <rect key="frame" x="153.33333333333337" y="0.0" width="107.66666666666663" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -401,7 +401,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Kmh-4L-7th">
-                                            <rect key="frame" x="24" y="18" width="357" height="89"/>
+                                            <rect key="frame" x="23" y="18" width="358" height="89"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <date key="date" timeIntervalSinceReferenceDate="514961630.97547197">
                                                 <!--2017-04-27 04:53:50 +0000-->
@@ -548,50 +548,62 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SWv-h5-Dfl">
                                 <rect key="frame" x="40" y="40" width="334" height="29"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <segments>
                                     <segment title="10 Days"/>
                                     <segment title="30 Days"/>
                                     <segment title="60 Days"/>
                                     <segment title="120 Days"/>
                                 </segments>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="valueChanged:" destination="9xL-pW-L2g" eventType="valueChanged" id="Q25-0y-gUD"/>
                                 </connections>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ySi-BT-SeB">
-                                <rect key="frame" x="36" y="343" width="303" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ySi-BT-SeB">
+                                <rect key="frame" x="49" y="343" width="316" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Lxd-qW-xnF"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Happiness"/>
                                     <segment title="Pride"/>
                                     <segment title="Calmness"/>
                                     <segment title="All"/>
                                 </segments>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="valueChanged:" destination="9xL-pW-L2g" eventType="valueChanged" id="vCt-US-cp9"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UoO-6W-nb3" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="24" y="76" width="327" height="259"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UoO-6W-nb3" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="28" y="76" width="358" height="259"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="259" id="6et-L8-HX0"/>
+                                </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u3Y-Rn-lgh">
-                                <rect key="frame" x="0.0" y="448" width="414" height="239"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u3Y-Rn-lgh">
+                                <rect key="frame" x="0.0" y="379" width="414" height="308"/>
                                 <connections>
                                     <segue destination="oHl-nG-4lj" kind="embed" identifier="graphListSegue" id="KwX-wp-2gO"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="backgroundColor" red="0.1450980392" green="0.23137254900000001" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="ySi-BT-SeB" firstAttribute="leading" secondItem="pM0-fR-JFX" secondAttribute="leadingMargin" constant="29" id="5q3-wi-FhB"/>
                             <constraint firstItem="SWv-h5-Dfl" firstAttribute="leading" secondItem="pM0-fR-JFX" secondAttribute="leadingMargin" constant="20" id="7Zg-fz-Gdt"/>
+                            <constraint firstItem="u3Y-Rn-lgh" firstAttribute="leading" secondItem="pM0-fR-JFX" secondAttribute="leading" id="A1a-YQ-qmK"/>
+                            <constraint firstItem="u3Y-Rn-lgh" firstAttribute="top" secondItem="ySi-BT-SeB" secondAttribute="bottom" constant="8" id="Rd0-2R-lk1"/>
+                            <constraint firstItem="UoO-6W-nb3" firstAttribute="leading" secondItem="pM0-fR-JFX" secondAttribute="leadingMargin" constant="8" id="TXb-Op-gve"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ySi-BT-SeB" secondAttribute="trailing" constant="29" id="bbo-2I-mut"/>
+                            <constraint firstItem="UoO-6W-nb3" firstAttribute="top" secondItem="SWv-h5-Dfl" secondAttribute="bottom" constant="8" id="cUm-M1-Xxn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UoO-6W-nb3" secondAttribute="trailing" constant="8" id="exo-dL-wNY"/>
+                            <constraint firstAttribute="trailing" secondItem="u3Y-Rn-lgh" secondAttribute="trailing" id="gqp-8e-iZB"/>
                             <constraint firstItem="SWv-h5-Dfl" firstAttribute="top" secondItem="xmE-9j-hIZ" secondAttribute="bottom" constant="20" id="hIy-tv-r6T"/>
+                            <constraint firstItem="ycX-n8-3Xt" firstAttribute="top" secondItem="u3Y-Rn-lgh" secondAttribute="bottom" id="heo-So-4Ct"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SWv-h5-Dfl" secondAttribute="trailing" constant="20" id="lJa-tc-9X5"/>
+                            <constraint firstItem="ySi-BT-SeB" firstAttribute="top" secondItem="UoO-6W-nb3" secondAttribute="bottom" constant="8" id="v1L-62-u34"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="graph" id="tw4-tH-hVZ"/>
@@ -934,9 +946,9 @@
             <objects>
                 <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="oHl-nG-4lj" customClass="LogListingController" customModule="Mettle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rW0-kE-p9L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="239"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="308"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="backgroundColor" red="0.1450980392" green="0.23137254900000001" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <prototypes>
@@ -944,7 +956,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rV1-3o-NnY" id="GY9-6s-upY">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qf2-aS-r6R">
@@ -960,7 +972,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UX8-HD-1ve">
                                             <rect key="frame" x="8" y="4" width="323" height="36"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJG-zy-Aiw" customClass="customCellView" customModule="Mettle" customModuleProvider="target">
@@ -984,7 +996,7 @@
                                         <constraint firstAttribute="bottom" secondItem="UX8-HD-1ve" secondAttribute="bottom" constant="4" id="xZH-Nr-b79"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.23137254900000001" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="cellCustomView" destination="XJG-zy-Aiw" id="9uY-X7-KfA"/>
                                     <outlet property="cellImageView" destination="fQI-4O-iY2" id="ksu-Yc-Hwe"/>
@@ -1021,7 +1033,7 @@
         <image name="upsetText" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ChQ-QV-nCJ"/>
+        <segue reference="mSU-Az-mDz"/>
         <segue reference="QGp-uR-nYd"/>
     </inferredMetricsTieBreakers>
 </document>

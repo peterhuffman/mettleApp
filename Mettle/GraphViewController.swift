@@ -20,9 +20,9 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
     
     weak var axisFormatDelegate: IAxisValueFormatter?
     
-    var happyColor:NSUIColor = NSUIColor.red
-    var proudColor:NSUIColor = NSUIColor.yellow
-    var calmColor:NSUIColor = NSUIColor.blue
+    var happyColor:NSUIColor = UIColor.init(rgb: 0xCC0F10)
+    var proudColor:NSUIColor = UIColor.init(rgb: 0xEDF01C)
+    var calmColor:NSUIColor = UIColor.init(rgb: 0x2A75B2)
     
     var logs: [Log] = []
     var buckets: [Bucket] = []
@@ -41,6 +41,7 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         
         lineChartView.delegate = self
         axisFormatDelegate = self
+        lineChartView.layer.cornerRadius = 10
         
         lineChartView.legend.font = NSUIFont.systemFont(ofSize: CGFloat(17.0))
         lineChartView.legend.formSize = CGFloat(15.0)

@@ -104,8 +104,8 @@ class CalendarViewController: UIViewController {
         do {
             let results = try context.fetch(fetchRequest)
             let Logs = results as! [Log]
-            for var log in Logs {
-                let date = log.date as! Date
+            for log in Logs {
+                let date = log.date! as Date
                 logDates[date.startOfDay] = true
             }
         } catch let error as NSError {
