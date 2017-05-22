@@ -1,0 +1,14 @@
+Project name:
+mettle
+
+Group members:
+Peter Huffman, Matt Linkous, Gordon Nickerson
+
+App Description:
+mettle is a mood-tracking app that allows users to document how they're feeling and analyze their logs.  Users can add photo and text to their ratings. The application provides a helpful calendar view for users to easily locate logs written on a specific day and a graph view to analyze mood ratings longitudinally.  Other features include self-scheduled notifications and the ability to add a passcode to lock the app.  Our users are anyone who is concerned with monitoring and reflecting on their mental health.  Potential user categories include stressed out college students, patients of psychiatrists and therapists, life loggers and people curious about how their habits impact how they feel.
+
+External resources:
+The project must be opened as a workspace to build the project in the Simulator.  This is because we are using three CocoaPod classes.  To install the pods, navigate to the project directory in Terminal and run 'pod install'
+
+Bugs or problems a user might encounter:
+The app is not very functional without at least a few days of mood tracking data.  This is easy to test by creating 3 or 4 logs retroactively.  In addition, deleting all the data in coreData creates some synchronization issues in the table views.

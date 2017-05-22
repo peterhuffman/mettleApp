@@ -6,4 +6,5 @@ target 'Mettle' do
   # Pods for Mettle
   pod 'JTAppleCalendar', '~> 7.0'
   pod 'Charts', '~> 3.0.1'
+  pod 'SmileLock'
 end

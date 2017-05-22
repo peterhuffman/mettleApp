@@ -33,7 +33,6 @@ class customCellView: UIView {
     var botValue: Float = 0.0
 
     override func draw(_ rect: CGRect) {
-//        print("drawing cell")
         
         self.layer.cornerRadius = 5
         
@@ -47,7 +46,6 @@ class customCellView: UIView {
         UIColor.clear.set()
         topPath.stroke()
         UIColor.init(rgb: 0xCC0F10).set()
-//        UIColor.red.set()
         topPath.fill()
         
         
@@ -62,7 +60,6 @@ class customCellView: UIView {
         UIColor.clear.set()
         midPath.stroke()
         UIColor.init(rgb: 0xEDF01C).set()
-//        UIColor.yellow.set()
         midPath.fill()
         
         // Draw bottom bar
@@ -75,7 +72,6 @@ class customCellView: UIView {
         UIColor.clear.set()
         botPath.stroke()
         UIColor.init(rgb: 0x2A75B2).set()
-//        UIColor.blue.set()
         botPath.fill()
         
         // Draw line down the middle

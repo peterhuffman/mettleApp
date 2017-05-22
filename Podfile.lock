@@ -3,15 +3,18 @@ PODS:
     - Charts/Core (= 3.0.2)
   - Charts/Core (3.0.2)
   - JTAppleCalendar (7.0.1)
+  - SmileLock (2.0.2)
 
 DEPENDENCIES:
   - Charts (~> 3.0.1)
   - JTAppleCalendar (~> 7.0)
+  - SmileLock
 
 SPEC CHECKSUMS:
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   JTAppleCalendar: 7c8cba3e06fd6fdfed72382eeeb87c304e727ddb
+  SmileLock: 7ae1e174b4697c0a33882dab838fc0bea94432f4
 
-PODFILE CHECKSUM: 18ade2255810057a923515f6b20bcfc7ec5912fa
+PODFILE CHECKSUM: e65c31e91599fd9832866d264b2dc15fd32f3985
 
 COCOAPODS: 1.2.1

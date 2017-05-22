@@ -170,8 +170,6 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         happyDataSet.setCircleColor(happyColor)
         happyDataSet.circleRadius = 5.0
         happyDataSet.lineWidth = 2.5
-        //happyDataSet.drawCircleHoleEnabled = false
-        //happyDataSet.drawCirclesEnabled = false
         happyDataSet.mode = LineChartDataSet.Mode.cubicBezier
         happyDataSet.cubicIntensity = 0.125
         
@@ -179,8 +177,6 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         prideDataSet.setCircleColor(proudColor)
         prideDataSet.circleRadius = 5.0
         prideDataSet.lineWidth = 2.5
-        //prideDataSet.drawCircleHoleEnabled = false
-        //prideDataSet.drawCirclesEnabled = false
         prideDataSet.mode = LineChartDataSet.Mode.cubicBezier
         prideDataSet.cubicIntensity = 0.125
         
@@ -188,8 +184,6 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
         calmDataSet.setCircleColor(calmColor)
         calmDataSet.circleRadius = 5.0
         calmDataSet.lineWidth = 2.5
-        //calmDataSet.drawCircleHoleEnabled = false
-        //calmDataSet.drawCirclesEnabled = false
         calmDataSet.mode = LineChartDataSet.Mode.cubicBezier
         calmDataSet.cubicIntensity = 0.125
         
@@ -208,10 +202,7 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        print(entry)
         let bucket = buckets[Int(entry.x)]
-        print(bucket.label)
-        print(bucket.end)
         if (logList != nil) {
             logList.fetchWithinDates(start: bucket.label, end: bucket.end)
         }
@@ -224,25 +215,9 @@ class GraphViewController: UIViewController, ChartViewDelegate, NSFetchedResults
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if (segue.identifier == "graphListSegue") {
-            //let destinationNavController = segue.destination as! UINavigationController
             logList = segue.destination as! LogListingController
-            // Now you have a pointer to the child view controller.
-            // You can save the reference to it, or pass data to it.
-            //childViewController.selectDate('');
-            // childViewController.fetchWithinDates(start: Date().addingTimeInterval(-60 * 5), end: Date())
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

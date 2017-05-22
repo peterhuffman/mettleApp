@@ -16,8 +16,6 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
     
     
     private let logs = LogCollection(){
-        print("Core Data connected")
-        
     }
     
     override func viewDidLoad() {
@@ -35,10 +33,10 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
     /*
      Initialize the fetched results controller
      
-     We configure this to fetch all of the books and break them into sections based on author name.
+     We configure this to fetch all of the logs and break them into sections based on date name.
      */
     func initializeFetchResultsController(){
-        // get all books
+        // get all logs
         let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Log")
         
 
@@ -59,21 +57,14 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
     
     func fetchWithinDates(start: Date, end:Date){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Log")
-        //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let dateSort = NSSortDescriptor(key: "date", ascending: false)
         request.sortDescriptors = [dateSort]
         request.predicate = NSPredicate(format: "(date >= %@) AND (date <= %@)", start as CVarArg, end as CVarArg)
-        print(start)
-        print(end)
         let moc = logs.managedObjectContext
         fetchedResultsController  = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: "sectionDate", cacheName: nil)
         fetchedResultsController.delegate = self
         do {
-            //let results = try context.fetch(request)
-            //let  logs = results as! [Log]
-            //print(logs.count)
             try fetchedResultsController.performFetch()
-            print(fetchedResultsController.sections!.count)
             tableView.reloadData()
 
         }catch{
@@ -100,7 +91,6 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         let sectionInfo = sections[section]
         
         return sectionInfo.numberOfObjects
-//        return 1
     }
     
     /* Get a table cell loaded with the right data for the entry at indexPath (section/row)*/
@@ -111,7 +101,7 @@ class LogListingController: UITableViewController, NSFetchedResultsControllerDel
         }
         
         guard let log = self.fetchedResultsController.object(at: indexPath) as? Log else{
-            fatalError("Cannot find book")
+            fatalError("Cannot find log")
         }
         
         cell.configureCell(log: log)

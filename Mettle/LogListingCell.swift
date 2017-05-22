@@ -53,7 +53,6 @@ class LogListingCell: UITableViewCell {
             cellImageView.image = UIImage(contentsOfFile: imagePath)
             return true
         } else {
-            print("no image.")
             return false
         }
     }

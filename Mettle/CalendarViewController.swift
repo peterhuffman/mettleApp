@@ -36,7 +36,6 @@ class CalendarViewController: UIViewController {
         self.title = nil
         
         setupCalendar()
-        // Do any additional setup after loading the view.
     }
     
     
@@ -126,23 +125,8 @@ class CalendarViewController: UIViewController {
     {
         if (segue.identifier == "dateListSegue") {
             logList = segue.destination as! LogListingController
-            // Now you have a pointer to the child view controller.
-            // You can save the reference to it, or pass data to it.
-            //childViewController.selectDate('');
-           // childViewController.fetchWithinDates(start: Date().addingTimeInterval(-60 * 5), end: Date())
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

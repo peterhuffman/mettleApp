@@ -34,7 +34,7 @@ class LogCollection{
         }
     }
     
-    /* Add a new book to the collection */
+    /* Add a new log to the collection */
     func add(date: Date, text: String, values: [Float], imageId: String){
         var log:Log!
         managedObjectContext.performAndWait {
@@ -55,7 +55,7 @@ class LogCollection{
         }
     }
     
-    /* Update the fields on a book
+    /* Update the fields on a log
      
      We make this a seperate function rather than setting the values directly so that we can use findAuthor and save changes.
      */
@@ -70,7 +70,7 @@ class LogCollection{
     }
     
     /*
-     Remove a book from the collection
+     Remove a log from the collection
      */
     func delete(_ log: Log){
         

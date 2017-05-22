@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1335BA9E1ED25C0000493113 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335BA9D1ED25C0000493113 /* PasswordViewController.swift */; };
+		1335BAA01ED260D100493113 /* EraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335BA9F1ED260D100493113 /* EraseViewController.swift */; };
 		13634BD71EABE2DA00D8CC25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13634BD61EABE2DA00D8CC25 /* AppDelegate.swift */; };
 		13634BD91EABE2DA00D8CC25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13634BD81EABE2DA00D8CC25 /* ViewController.swift */; };
 		13634BDC1EABE2DA00D8CC25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13634BDA1EABE2DA00D8CC25 /* Main.storyboard */; };
 		13634BDF1EABE2DA00D8CC25 /* Mettle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13634BDD1EABE2DA00D8CC25 /* Mettle.xcdatamodeld */; };
 		13634BE11EABE2DA00D8CC25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13634BE01EABE2DA00D8CC25 /* Assets.xcassets */; };
 		13634BE41EABE2DA00D8CC25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13634BE21EABE2DA00D8CC25 /* LaunchScreen.storyboard */; };
+		13BE6C3D1ED2741D00DE4334 /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 13BE6C3C1ED2741D00DE4334 /* readme */; };
+		13BF97AC1ED240E6005C0DC2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF97AB1ED240E6005C0DC2 /* HomeViewController.swift */; };
+		13BF97AE1ED244C1005C0DC2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF97AD1ED244C1005C0DC2 /* LoginViewController.swift */; };
+		13BF97B01ED24545005C0DC2 /* MyPasswordUIValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF97AF1ED24545005C0DC2 /* MyPasswordUIValidation.swift */; };
+		13BF97B21ED245F0005C0DC2 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BF97B11ED245F0005C0DC2 /* extension.swift */; };
 		13E62F3D1EB011360067C2C4 /* LogListingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F3C1EB011360067C2C4 /* LogListingController.swift */; };
 		13E62F3F1EB012190067C2C4 /* LogListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F3E1EB012190067C2C4 /* LogListingCell.swift */; };
 		13E62F411EB014C90067C2C4 /* LogCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E62F401EB014C90067C2C4 /* LogCollection.swift */; };
@@ -29,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		0AB7C176EC6CE18ECAF9E86F /* Pods-Mettle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mettle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mettle/Pods-Mettle.debug.xcconfig"; sourceTree = "<group>"; };
+		1335BA9D1ED25C0000493113 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		1335BA9F1ED260D100493113 /* EraseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EraseViewController.swift; sourceTree = "<group>"; };
 		13634BD31EABE2DA00D8CC25 /* Mettle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mettle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13634BD61EABE2DA00D8CC25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13634BD81EABE2DA00D8CC25 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +46,11 @@
 		13634BE01EABE2DA00D8CC25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13634BE31EABE2DA00D8CC25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13634BE51EABE2DA00D8CC25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13BE6C3C1ED2741D00DE4334 /* readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
+		13BF97AB1ED240E6005C0DC2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		13BF97AD1ED244C1005C0DC2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
+		13BF97AF1ED24545005C0DC2 /* MyPasswordUIValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPasswordUIValidation.swift; sourceTree = "<group>"; };
+		13BF97B11ED245F0005C0DC2 /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		13E62F3C1EB011360067C2C4 /* LogListingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogListingController.swift; sourceTree = "<group>"; };
 		13E62F3E1EB012190067C2C4 /* LogListingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogListingCell.swift; sourceTree = "<group>"; };
 		13E62F401EB014C90067C2C4 /* LogCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCollection.swift; sourceTree = "<group>"; };
@@ -64,6 +78,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1335BA9C1ED259D900493113 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				13BF97AB1ED240E6005C0DC2 /* HomeViewController.swift */,
+				13BF97AD1ED244C1005C0DC2 /* LoginViewController.swift */,
+				13BF97B11ED245F0005C0DC2 /* extension.swift */,
+				13BF97AF1ED24545005C0DC2 /* MyPasswordUIValidation.swift */,
+			);
+			name = Password;
+			sourceTree = "<group>";
+		};
 		1344C7551EC187AC007C528B /* Log */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +141,8 @@
 			children = (
 				1344C7571EC187E1007C528B /* Other */,
 				13634BDA1EABE2DA00D8CC25 /* Main.storyboard */,
+				13BE6C3C1ED2741D00DE4334 /* readme */,
+				1335BA9C1ED259D900493113 /* Password */,
 				345C02E21EBF745B00754479 /* Calendar */,
 				1344C7561EC187CD007C528B /* Graph */,
 				1344C7551EC187AC007C528B /* Log */,
@@ -157,6 +184,8 @@
 		A35D8F031EB17654000F4BEB /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				1335BA9F1ED260D100493113 /* EraseViewController.swift */,
+				1335BA9D1ED25C0000493113 /* PasswordViewController.swift */,
 				A35D8F011EB1749B000F4BEB /* SettingsTableViewController.swift */,
 				A35D8F041EB17942000F4BEB /* SwitchCell.swift */,
 				A393F52B1EB18548005CA614 /* DatePickerCell.swift */,
@@ -227,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13BE6C3D1ED2741D00DE4334 /* readme in Resources */,
 				13634BE41EABE2DA00D8CC25 /* LaunchScreen.storyboard in Resources */,
 				13634BE11EABE2DA00D8CC25 /* Assets.xcassets in Resources */,
 				13634BDC1EABE2DA00D8CC25 /* Main.storyboard in Resources */,
@@ -291,14 +321,20 @@
 				13634BD91EABE2DA00D8CC25 /* ViewController.swift in Sources */,
 				13E62F431EB0159D0067C2C4 /* LogDetailViewController.swift in Sources */,
 				A35D8F051EB17942000F4BEB /* SwitchCell.swift in Sources */,
+				13BF97B21ED245F0005C0DC2 /* extension.swift in Sources */,
 				13E62F3D1EB011360067C2C4 /* LogListingController.swift in Sources */,
+				13BF97B01ED24545005C0DC2 /* MyPasswordUIValidation.swift in Sources */,
+				1335BA9E1ED25C0000493113 /* PasswordViewController.swift in Sources */,
+				1335BAA01ED260D100493113 /* EraseViewController.swift in Sources */,
 				13E62F411EB014C90067C2C4 /* LogCollection.swift in Sources */,
+				13BF97AC1ED240E6005C0DC2 /* HomeViewController.swift in Sources */,
 				A393F52C1EB18548005CA614 /* DatePickerCell.swift in Sources */,
 				A35D8F021EB1749B000F4BEB /* SettingsTableViewController.swift in Sources */,
 				A37577C11EBF857F003F6175 /* GraphViewController.swift in Sources */,
 				13E62F3F1EB012190067C2C4 /* LogListingCell.swift in Sources */,
 				13634BD71EABE2DA00D8CC25 /* AppDelegate.swift in Sources */,
 				34B7218F1EB17DF0004355EE /* CalendarViewController.swift in Sources */,
+				13BF97AE1ED244C1005C0DC2 /* LoginViewController.swift in Sources */,
 				34C690BF1EB15A2200A01B76 /* CustomCell.swift in Sources */,
 				13EE6C821EBFB82A0040D4B1 /* customCellView.swift in Sources */,
 				13634BDF1EABE2DA00D8CC25 /* Mettle.xcdatamodeld in Sources */,
